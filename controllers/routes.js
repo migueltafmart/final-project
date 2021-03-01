@@ -5,12 +5,7 @@ const express = require('express'),
     routes = express.Router();
 
 //GET public petitions
-routes.get('/', controller.getHome)
+routes.get('/', controller.getUser);
 //POST public petitions
-routes.post('/', controller.postHome)
-// PUT public petitions
-routes.put('/', controller.putHome)
-// DELETE public petitions
-routes.delete('/', controller.deleteHome)
-
+routes.post('/', controller.signUp);
 module.exports = routes;
