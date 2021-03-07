@@ -2,16 +2,19 @@
 const routes = require("./controllers/routes");
 // Downloaded modules
 const express = require("express"),
+  cors = require('cors'),
   app = express(),
   dotenv = require("dotenv");
 dotenv.config();
 
 // Server details
-const PORT = process.env.PORT,
-  HOST = process.env.HOST;
+const PORT = 5500,
+  HOST = "localhost";
 //Middlewares
 app.use(express.json());
+app.use(cors());
 app.use(routes);
+
 app.use((req, res, next) => {
   next(404);
 });
