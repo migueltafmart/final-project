@@ -4,9 +4,9 @@ const mariadb = require("mariadb"),
   crypto = require("crypto");
 
 const pool = mariadb.createPool({
-  host: "194.146.38.180",
-  user: "root",
-  password: "retoDeTripulacionesUmbrela5",
+  host: process.env.DBHOST,
+  user: process.env.DBUSER,
+  password: process.env.DBPWD,
   connectionLimit: 5,
   database: "umbrela",
 });
