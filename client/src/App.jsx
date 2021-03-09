@@ -34,11 +34,6 @@ function App() {
       )
         .then((res) => (sessionStorage.user = res))
         .catch((err) => console.log(err));
-      role.value = "";
-      displayName.value = "";
-      email.value = "";
-      urlToImg.value = "";
-      pwd.value = "";
     }
   };
   return (
