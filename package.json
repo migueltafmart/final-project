@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node -r dotenv/config api.js",
     "test": "jest",
-    "e2e": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -30,8 +29,5 @@
     "mongodb": "^3.6.4",
     "path": "^0.12.7",
     "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "cypress": "^6.4.0"
   }
 }
