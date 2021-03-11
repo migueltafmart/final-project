@@ -10,7 +10,7 @@
 
 ### **GET** *Gets a single offer from the database*
 	/api/offer/(offer ID)
- - Without parameters returns: **an offer on the database**
+ - returns: **an offer on the database**
 
 ### **POST** *Sends email and password to the database*
 	/api/login
@@ -47,11 +47,11 @@
 
 ### **GET** *Gets the information for the given education id from the database*
 	/api/education/(education ID)
- - returns: **information from the users who matched with the given offer**
+ - returns: **Education entry info**
 
 ### **GET** *Gets the information for the given experience id from the database*
 	/api/experience/(experience ID)
- - returns: **information from the users who matched with the given offer**
+ - returns: **Experience entry info**
 
 ### **GET** *Gets all the education from the given caretaker id from the database*
 	/api/caretaker/(caretaker ID)/education
@@ -64,7 +64,7 @@
  ### **POST** *Signs up an account to the database*
  *Just for admin accounts*
  
-	/api/offer/(company ID)
+	/api/signup
  - returns: **The created offer from the database**
 
 ### **POST** *Posts an offer to the database*
@@ -101,13 +101,7 @@
  *Just for company accounts*
  
 	/api/match/(match ID)/education
- - returns: **The updated offer from the database**
-
-### **PUT** *Edits an offer posted on the database*
- *Just for caretaker accounts*
- 
-	/api/education/(education ID)/education
- - returns: **The updated education entry from the database**
+ - returns: **The updated match from the database**
 
 ### **PUT** *Edits an education entry posted on the database*
  *Just for caretaker accounts*
@@ -119,7 +113,7 @@
  *Just for caretaker accounts*
  
 	/api/experience/(experience ID)
- - returns: **The updated education entry from the database**
+ - returns: **The updated experience entry from the database**
 
 ### **PUT** *Edits the account posted on the database*
  
@@ -151,5 +145,5 @@
 ### **DELETE** *Deletes an user account posted on the database*
 *Just for caretaker accounts*
  
-	/api/signup
+	/api/user/(user ID)
  - returns: **The number of rows affected**
