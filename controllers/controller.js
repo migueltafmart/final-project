@@ -1,45 +1,30 @@
 const db = require("../models/db"),
   regExp = require("../utils/regExp");
-const crypto = require("crypto");
-// GET a Home
+const crypto = require("crypto"),
+  fs = require("fs"),
+  path = require("path");
+
+exports.docs = (req, res) => {
+  res.sendFile(path.resolve('docs/docs.html'));
+}
+exports.logo = (req, res) => {
+  res.sendFile(path.resolve('assets/logo.png'));
+}
 exports.getUser = async (req, res) => {
-  //Si la API Key existe en BBDD
-  if (req.query.apiKey && (await db.checkApiKey(req.query.apiKey))) {
-    let user = await db.getUser(req.params.id);
-    return res.status(200).json({
-      view: user.role,
-      status: true,
-      response: user,
-    });
-    // Si no existe en la base de datos
-  } else if (req.query.apiKey) {
-    return res.status(403).json({
-      status: false,
-      response: "Wrong API key provided",
-    });
-    // Si no ha introducido query
-  } else {
-    return res.status(403).json({
-      status: false,
-      response: "No API Key provided",
-    });
-  }
+  return res.status(200).json({
+    status: true,
+    response: await db.getUser(req.params.id),
+  });
 };
 
 exports.signUp = async (req, res) => {
-  let { role, displayName, urlToImg, email, pwd, disp } = req.body;
-  if (await db.checkEmail(email)) {
+  if (await db.checkEmail(req.body.email)) {
     return res.status(400).json({
       status: false,
       response: "Account already exists",
     });
-  } else if (
-    regExp.role.test(role) &&
-    regExp.displayName.test(displayName) &&
-    regExp.url.test(urlToImg) &&
-    regExp.email.test(email) &&
-    regExp.pwd.test(pwd)
-  ) {
+  } else if (req.body) {
+    let { role, displayName, urlToImg, email, pwd, disp } = req.body;
     let response = await db.signUp(
       role,
       displayName,
@@ -84,6 +69,11 @@ exports.logIn = async (req, res) => {
           status: true,
           response: await db.getUser(response.userId),
         });
+      }else{
+        return res.status(403).json({
+          status: false,
+          response: "Wrong credentials",
+        });
       }
     }
   } else {
@@ -95,27 +85,32 @@ exports.logIn = async (req, res) => {
 };
 exports.getOffers = async (req, res) => {
   if (req.params.id) {
-    //* Checkear la API key y la identidad de compañia
-    if (await db.checkCompany(req.params.id)) {
+    if (await db.checkUser(req.params.id)) {
       return res.status(200).json({
         status: true,
         response: await db.getOffers(req.params.id),
       });
     }
   } else {
-    return res.status(400).json({
-      status: false,
-      response: "Something went wrong",
+    return res.status(200).json({
+      status: true,
+      response: await db.getOffers(),
     });
   }
 };
 exports.getOffer = async (req, res) => {
+  console.log(req.params.offerId)
   if (req.params.offerId) {
     //* Checkear la API key y la identidad de compañia
-    if (await db.checkCompany(req.params.offerId)) {
+    if (await db.checkOffer(req.params.offerId)) {
       return res.status(200).json({
         status: true,
         response: await db.getOffer(req.params.offerId),
+      });
+    }else{
+      return res.status(400).json({
+        status: false,
+        response: "Something went wrong",
       });
     }
   } else {
@@ -127,11 +122,10 @@ exports.getOffer = async (req, res) => {
 };
 exports.postOffer = async (req, res) => {
   const { jobTitle, category, hoursADay, jobDesc } = req.body;
-  let company = await db.getCompany(req.params.id);
+  let company = await db.getUser(req.params.id);
   if (req.query.apiKey === company.apiKey) {
     if (
       jobTitle.length > 0 &&
-      regExp.category.test(category) &&
       hoursADay > 0 &&
       jobDesc.length > 0 &&
       jobDesc.length < 500
@@ -160,16 +154,6 @@ exports.postOffer = async (req, res) => {
         response: "Fill out all the fields",
       });
     }
-  } else if (req.query.apiKey) {
-    return res.status(403).json({
-      status: false,
-      response: "Wrong API key provided",
-    });
-  } else if (req.params.id) {
-    return res.status(403).json({
-      status: false,
-      response: "Not allowed",
-    });
   } else {
     return res.status(400).json({
       status: false,
@@ -179,46 +163,24 @@ exports.postOffer = async (req, res) => {
 };
 //* PUT an offer
 exports.putOffer = async (req, res) => {
-  let set,
+  let 
     { jobTitle, jobDesc, category, hoursADay, resolved } = req.body;
   if (
     jobTitle.length > 0 &&
-    regExp.category.test(category) &&
     hoursADay > 0 &&
     jobDesc.length > 0 &&
     jobDesc.length < 500
   ) {
-    if (req.params.offerId && req.query.apiKey) {
-      let offer = await db.getOffer(req.params.offerId);
-      let company = await db.getUser(offer.userId);
-      if (req.query.apiKey === company.apiKey) {
-        return res.status(200).json({
-          status: true,
-          response: await db.putOffer(req.params.offerId, {
-            jobTitle,
-            category,
-            hoursADay,
-            jobDesc,
-            resolved,
-          }),
-        });
-      }
-    } else if (req.params.id) {
-      return res.status(403).json({
-        status: false,
-        response: "Not allowed",
-      });
-    } else if (req.query.apiKey) {
-      return res.status(403).json({
-        status: false,
-        response: "Not allowed",
-      });
-    } else {
-      return res.status(400).json({
-        status: false,
-        response: "Something went wrong",
-      });
-    }
+    return res.status(200).json({
+      status: true,
+      response: await db.putOffer(req.params.offerId, {
+        jobTitle,
+        category,
+        hoursADay,
+        jobDesc,
+        resolved,
+      }),
+    });
   } else {
     return res.status(400).json({
       status: false,
@@ -229,23 +191,13 @@ exports.putOffer = async (req, res) => {
 exports.deleteOffer = async (req, res) => {
   if (req.params.offerId && req.query.apiKey) {
     let offer = await db.getOffer(req.params.offerId);
-    let company = await db.getCompany(offer.userId);
+    let company = await db.getUser(offer.userId);
     if (req.query.apiKey === company.apiKey) {
       return res.status(200).json({
         status: true,
-        response: await db.deleteOffer(req.params.userId),
+        response: await db.deleteOffer(req.params.offerId),
       });
     }
-  } else if (req.params.offerId) {
-    return res.status(403).json({
-      status: false,
-      response: "Not allowed",
-    });
-  } else if (req.query.apiKey) {
-    return res.status(403).json({
-      status: false,
-      response: "Not allowed",
-    });
   } else {
     return res.status(400).json({
       status: false,
@@ -254,39 +206,27 @@ exports.deleteOffer = async (req, res) => {
   }
 };
 exports.getCompany = async (req, res) => {
-  if (
-    (await db.checkUser(req.params.id)) &&
-    (await db.checkApiKey(req.query.apiKey))
-  ) {
+  return res.status(200).json({
+    status: true,
+    response: await db.getUser(req.params.id),
+  });
+};
+exports.getCompanies = async (req, res) => {
+  try {
     return res.status(200).json({
       status: true,
-      response: await db.getUser(req.params.id),
+      response: await db.getCompanies(),
     });
-  } else {
+  } catch (err) {
+    console.log(err);
     return res.status(400).json({
       status: false,
       response: "Something went wrong",
     });
   }
 };
-exports.getCompanies = async (req, res) => {
-  if (await db.checkApiKey(req.query.apiKey)) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.getCompanies(),
-      });
-    } catch (err) {
-      console.log(err);
-      return res.status(400).json({
-        status: false,
-        response: "Something went wrong",
-      });
-    }
-  }
-};
 exports.getCaretaker = async (req, res) => {
-  if ((await db.checkApiKey(req.query.apiKey)) && checkUser(req.params.id)) {
+  if (req.params.id && checkUser(req.params.id)) {
     try {
       return res.status(200).json({
         status: true,
@@ -307,11 +247,7 @@ exports.getCaretaker = async (req, res) => {
   }
 };
 exports.getMatches = async (req, res) => {
-  if (
-    (await db.checkUser(req.params.id)) &&
-    (await db.checkApiKey(req.query.apiKey)) &&
-    (await db.getRole(req.quer.apiKey)) === "caretaker"
-  ) {
+  if (await db.checkUser(req.params.id)) {
     try {
       return res.status(200).json({
         status: true,
@@ -332,11 +268,7 @@ exports.getMatches = async (req, res) => {
   }
 };
 exports.getCandidates = async (req, res) => {
-  if (
-    (await db.checkUser(req.params.id)) &&
-    (await db.checkApiKey(req.query.apiKey)) &&
-    (await db.getRole(req.query.apiKey)) === "company"
-  ) {
+  if (await db.checkUser(req.params.id)) {
     try {
       return res.status(200).json({
         status: true,
@@ -357,12 +289,9 @@ exports.getCandidates = async (req, res) => {
   }
 };
 exports.postMatch = async (req, res) => {
-  if (res.query.apiKey && res.params.offerId && res.params.id) {
-    if (
-      (await db.checkApiKey(res.query.apiKey)) &&
-      (await db.getRole(req.query.apiKey)) === "caretaker" &&
-      (await db.checkCaretaker(req.params.id))
-    ) {
+  console.log()
+  if (req.params.offerId && req.params.id) {
+    if (await db.checkUser(req.params.id)) {
       try {
         return res.status(200).json({
           status: true,
@@ -389,12 +318,8 @@ exports.postMatch = async (req, res) => {
   }
 };
 exports.getMatch = async (req, res) => {
-  if (res.query.apiKey && req.params.matchId) {
-    if (
-      (await db.checkApiKey(res.query.apiKey)) &&
-      (await db.getRole(req.query.apiKey)) === "caretaker" &&
-      (await db.getMatch(req.params.matchId))
-    ) {
+  if (req.params.matchId) {
+    if (await db.checkMatch(req.params.matchId)) {
       try {
         return res.status(200).json({
           status: true,
@@ -421,11 +346,8 @@ exports.getMatch = async (req, res) => {
   }
 };
 exports.putMatch = async (req, res) => {
-  if (req.params.matchId && req.query.apiKey) {
-    if (
-      (await db.getRole(req.query.apiKey)) === "company" &&
-      (await db.checkMatch(req.params.matchId))
-    ) {
+  if (req.params.matchId) {
+    if (await db.checkMatch(req.params.matchId)) {
       return res.status(200).json({
         status: true,
         response: await db.putMatch(req.params.matchId, req.body),
@@ -444,11 +366,8 @@ exports.putMatch = async (req, res) => {
   }
 };
 exports.deleteMatch = async (req, res) => {
-  if (req.params.matchId && req.query.apiKey) {
-    if (
-      (await db.getRole(req.query.apiKey)) === "caretaker" &&
-      (await db.checkMatch(req.params.matchId))
-    ) {
+  if (req.params.matchId) {
+    if (await db.checkMatch(req.params.matchId)) {
       return res.status(200).json({
         status: true,
         response: await db.deleteMatch(req.params.matchId),
@@ -467,21 +386,17 @@ exports.deleteMatch = async (req, res) => {
   }
 };
 exports.postEducation = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker" &&
-    req.body
-  ) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.postEducation(req.params.Id, req.body),
-      });
-    } catch (e) {
-      console.log(e);
+  if (req.body && req.params.id) {
+    let response = await db.postEducation(req.params.id, req.body);
+    if (typeof response == "string") {
       return res.status(400).json({
         status: false,
-        response: "Something went wrong",
+        response: response,
+      });
+    } else {
+      return res.status(200).json({
+        status: true,
+        response: response,
       });
     }
   } else {
@@ -492,21 +407,17 @@ exports.postEducation = async (req, res) => {
   }
 };
 exports.postExperience = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker" &&
-    req.body
-  ) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.postExperience(req.params.id, req.body),
-      });
-    } catch (e) {
-      console.log(e);
+  if (req.body && req.params.id) {
+    let response = await db.postExperience(req.params.id, req.body);
+    if (typeof response == "string") {
       return res.status(400).json({
         status: false,
-        response: "Something went wrong",
+        response: response,
+      });
+    } else {
+      return res.status(200).json({
+        status: true,
+        response: response,
       });
     }
   } else {
@@ -517,23 +428,13 @@ exports.postExperience = async (req, res) => {
   }
 };
 exports.getExperience = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.checkApiKey(req.query.apiKey))
-  ) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.getExperience(req.params.id),
-      });
-    } catch (e) {
-      console.log(e);
-      return res.status(400).json({
-        status: false,
-        response: "Something went wrong",
-      });
-    }
-  } else {
+  try {
+    return res.status(200).json({
+      status: true,
+      response: await db.getExperience(req.params.id),
+    });
+  } catch (e) {
+    console.log(e);
     return res.status(400).json({
       status: false,
       response: "Something went wrong",
@@ -541,23 +442,13 @@ exports.getExperience = async (req, res) => {
   }
 };
 exports.getEducation = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.checkApiKey(req.query.apiKey))
-  ) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.getEducation(req.params.id),
-      });
-    } catch (e) {
-      console.log(e);
-      return res.status(400).json({
-        status: false,
-        response: "Something went wrong",
-      });
-    }
-  } else {
+  try {
+    return res.status(200).json({
+      status: true,
+      response: await db.getEducation(req.params.id),
+    });
+  } catch (e) {
+    console.log(e);
     return res.status(400).json({
       status: false,
       response: "Something went wrong",
@@ -566,21 +457,17 @@ exports.getEducation = async (req, res) => {
 };
 
 exports.putEducation = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker" &&
-    req.body
-  ) {
-    try {
-      return res.status(200).json({
-        status: true,
-        response: await db.putEducation(req.params.Id, req.body),
-      });
-    } catch (e) {
-      console.log(e);
+  if (req.body && req.params.id) {
+    let response = await db.putEducation(req.params.id, req.body);
+    if (typeof response == "string") {
       return res.status(400).json({
         status: false,
-        response: "Something went wrong",
+        response: response,
+      });
+    } else {
+      return res.status(200).json({
+        status: true,
+        response: response,
       });
     }
   } else {
@@ -589,13 +476,9 @@ exports.putEducation = async (req, res) => {
       response: "Something went wrong",
     });
   }
-};
+}
 exports.putExperience = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker" &&
-    req.body
-  ) {
+  if (req.body) {
     try {
       return res.status(200).json({
         status: true,
@@ -616,10 +499,7 @@ exports.putExperience = async (req, res) => {
   }
 };
 exports.getAllExperience = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.checkApiKey(req.query.apiKey))
-  ) {
+  if (req.params.id) {
     try {
       return res.status(200).json({
         status: true,
@@ -640,10 +520,7 @@ exports.getAllExperience = async (req, res) => {
   }
 };
 exports.getAllEducation = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.checkApiKey(req.query.apiKey))
-  ) {
+  if (req.params.id) {
     try {
       return res.status(200).json({
         status: true,
@@ -664,14 +541,11 @@ exports.getAllEducation = async (req, res) => {
   }
 };
 exports.deleteEducation = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker"
-  ) {
+  if (req.params.id) {
     try {
       return res.status(200).json({
         status: true,
-        response: await db.deleteEducation(req.params.Id),
+        response: await db.deleteEducation(req.params.id),
       });
     } catch (e) {
       console.log(e);
@@ -688,10 +562,7 @@ exports.deleteEducation = async (req, res) => {
   }
 };
 exports.deleteExperience = async (req, res) => {
-  if (
-    (await db.getUser(req.params.id).apiKey) === req.query.apiKey &&
-    (await db.getRole(req.query.apiKey)) === "caretaker"
-  ) {
+  if (req.params.id) {
     try {
       return res.status(200).json({
         status: true,
@@ -713,21 +584,11 @@ exports.deleteExperience = async (req, res) => {
 };
 
 exports.deleteAccount = async (req, res) => {
-  if (req.params.id && req.query.apiKey) {
-    if (
-      (await db.getRole(req.query.apiKey)) === "caretaker" &&
-      (await db.checkMatch(req.params.id))
-    ) {
-      return res.status(200).json({
-        status: true,
-        response: await db.deleteAccount(req.params.id),
-      });
-    } else {
-      return res.status(403).json({
-        status: false,
-        response: "Something went wrong",
-      });
-    }
+  if (req.params.id) {
+    return res.status(200).json({
+      status: true,
+      response: await db.deleteAccount(req.params.id),
+    });
   } else {
     return res.status(400).json({
       status: false,
@@ -736,28 +597,19 @@ exports.deleteAccount = async (req, res) => {
   }
 };
 exports.editAccount = async (req, res) => {
-  let { role, displayName, urlToImg, email, pwd, disp} = req.body;
-  if (await db.checkEmail(email) && req.params.id) {
-    return res.status(400).json({
-      status: false,
-      response: "Account already exists",
-    });
-  } else if (
-    regExp.role.test(role) &&
-    regExp.displayName.test(displayName) &&
-    regExp.url.test(urlToImg) &&
-    regExp.email.test(email) &&
-    regExp.pwd.test(pwd)&&
-    await db.checkUser(req.params.id)
+  let { role, displayName, urlToImg, email, pwd, disp } = req.body;
+  if (
+     role && displayName && urlToImg && email && pwd &&
+    (await db.checkUser(req.params.id))
   ) {
     let response = await db.editAccount(
+      req.params.id,
       role,
       displayName,
       urlToImg,
       email,
       pwd,
-      disp || 0,
-      req.params.id
+      disp || 0
     );
     if (typeof response == "string") {
       return res.status(400).json({

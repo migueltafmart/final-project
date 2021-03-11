@@ -2,19 +2,16 @@
 const routes = require("./controllers/routes");
 // Downloaded modules
 const express = require("express"),
-  cors = require('cors'),
-  app = express(),
-  dotenv = require("dotenv");
-dotenv.config();
+  cors = require("cors"),
+  app = express();
 
 // Server details
-const PORT = 5500,
+const PORT = process.env.PORT || 5500,
   HOST = "localhost";
 //Middlewares
 app.use(express.json());
 app.use(cors());
 app.use(routes);
-
 app.use((req, res, next) => {
   next(404);
 });
@@ -34,4 +31,4 @@ app.use((err, req, res, next) => {
 });
 
 // API server
-app.listen(PORT, () => console.log("Server running at http://localhost:5500"));
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
