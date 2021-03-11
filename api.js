@@ -4,6 +4,7 @@ const routes = require("./controllers/routes");
 const express = require("express"),
   cors = require("cors"),
   favicon = require("serve-favicon"),
+  path=require("path"),
   app = express();
 
 // Server details
