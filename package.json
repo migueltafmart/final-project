@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "node -r dotenv/config api.js",
+    "start":"node api.js",
+    "dev": "nodemon -r dotenv/config api.js",
     "test": "jest"
   },
   "repository": {
