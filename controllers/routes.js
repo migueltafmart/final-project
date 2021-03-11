@@ -6,6 +6,7 @@ const express = require('express'),
     routes = express.Router();
 
 //*GET public petitions
+routes.get('/', controller.docs);
 routes.get('/api', controller.docs);
 routes.get('/api/logo', controller.logo);
 routes.get('/api/offers/:id?', controller.getOffers);
