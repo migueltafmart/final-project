@@ -172,7 +172,7 @@ exports.getCompanies = async () => {
   }
 };
 //*POST Signup user
-exports.signUp = async (role, displayName, urlToImg, email, pwd, disp) => {
+exports.signUp = async (role, displayName, urlToImg, email, pwd, disp, area) => {
   if ((await this.checkEmail(email)) > 0) {
     return "Account already exsists";
   } else if (
@@ -185,8 +185,8 @@ exports.signUp = async (role, displayName, urlToImg, email, pwd, disp) => {
     try {
       conn = await pool.getConnection();
       let res = await conn.query(
-        "INSERT INTO users (role, displayName, urlToImg, email, hashPw, apiKey, disp) VALUES (?,?,?,?,?,?,?);",
-        [role, displayName, urlToImg, email, hash, apiKey, disp || 0]
+        "INSERT INTO users (role, displayName, urlToImg, email, hashPw, apiKey, disp, area) VALUES (?,?,?,?,?,?,?,?);",
+        [role, displayName, urlToImg, email, hash, apiKey, disp || 0, area || null]
       );
       payload = await this.getUser(res.insertId);
     } catch (err) {
@@ -272,20 +272,22 @@ exports.postOffer = async ({
   hoursADay,
   jobDesc,
   userId,
+  area,
 }) => {
   if (
     jobTitle.length > 0 &&
     hoursADay > 0 &&
     jobDesc.length > 0 &&
-    jobDesc.length < 500
+    jobDesc.length < 500 &&
+    area.length > 0
   ) {
     let conn;
     let payload;
     try {
       conn = await pool.getConnection();
       let res = await conn.query(
-        "INSERT INTO offers (jobTitle, category, hoursADay, jobDesc, userId) VALUES (?,?,?,?,?);",
-        [jobTitle, category, hoursADay, jobDesc, userId]
+        "INSERT INTO offers (jobTitle, category, hoursADay, jobDesc, userId, area) VALUES (?,?,?,?,?,?);",
+        [jobTitle, category, hoursADay, jobDesc, userId, area]
       );
       payload = res;
     } catch (err) {

@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start":"node api.js",
+    "start": "node api.js",
     "dev": "nodemon -r dotenv/config api.js",
     "test": "jest"
   },
@@ -29,6 +29,7 @@
     "mariadb": "^2.5.3",
     "mongodb": "^3.6.4",
     "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
     "uuid": "^8.3.2"
   }
 }
