@@ -3,15 +3,13 @@ const routes = require("./controllers/routes");
 // Downloaded modules
 const express = require("express"),
   cors = require("cors"),
-  favicon = require("serve-favicon"),
   path=require("path"),
   app = express();
 
 // Server details
 const PORT = process.env.PORT || 5500,
   HOST = "localhost";
-//Middlewares
-app.use(favicon(path.join(__dirname, 'public', 'favicon.png')))
+//Middlewaress
 app.use(express.json());
 app.use(cors());
 app.use(routes);
