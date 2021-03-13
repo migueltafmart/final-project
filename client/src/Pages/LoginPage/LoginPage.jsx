@@ -1,7 +1,16 @@
 import React from "react";
+import Footer from "../../Components/Footer/Footer";
+import Header from "../../Components/Header/Header";
+import Main from "../../Components/Main/Main";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 };
 
 export default LoginPage;

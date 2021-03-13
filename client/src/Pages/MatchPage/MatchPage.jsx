@@ -1,7 +1,16 @@
 import React from "react";
+import Footer from "../../Components/Footer/Footer";
+import Header from "../../Components/Header/Header";
+import Main from "../../Components/Main/Main";
 
 const MatchPage = () => {
-  return <div>MatchPage</div>;
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 };
 
 export default MatchPage;

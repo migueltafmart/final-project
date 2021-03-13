@@ -1,27 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import"./MainNavigation.scss"
+import "./MainNavigation.scss";
+import logoCc from "../../../img/logo-cc.png";
+import logoL from "../../../img/logo-l.png";
 const MainNavigation = () => {
-  return <nav className="MainNavigation">
+  return (
+    <nav className="MainNavigation">
       <Link to="/">
-       <img src="https://cuidaralcuidador.herokuapp.com/api/logo" alt="cuidar al cuidador"/>
+        <img src={logoCc} alt="Cuidar al cuidador" />
       </Link>
-     <Link to="/inicio">
+      <Link to="/inicio">
         <h4>¿Qué es cuidar al cuidador</h4>
-     </Link>
-     <Link to="/ofertas" >
-      <h4>Consulta las ofertas de trabajo activas</h4>
-     </Link>
-     <Link to="/signup">
-      <h4>Registra tu perfil en pocos pasos</h4>
-     </Link >
-     <Link to="/">
-      <h4>¿Cómo compaginarlo con cada fase?</h4>
-     </Link>
-     <Link to="/">
-       <img src="https://cuidaralcuidador.herokuapp.com/api/logo" alt="cuidar al cuidador"/>
       </Link>
-  </nav>;
+      <Link to="/ofertas">
+        <h4>Consulta las ofertas de trabajo activas</h4>
+      </Link>
+      <Link to="/registro">
+        <h4>Registra tu perfil en pocos pasos</h4>
+      </Link>
+      <Link to="/">
+        <h4>¿Cómo compaginarlo con cada fase?</h4>
+      </Link>
+      <a href="https://ffluzon.org">
+        <img src={logoL} alt="Fundación Luzón" />
+      </a>
+    </nav>
+  );
 };
 
 export default MainNavigation;
