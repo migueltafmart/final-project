@@ -1,6 +1,6 @@
 ![cuidar al cuidador](https://cuidaralcuidador.herokuapp.com/api/logo)
-# Cuida al cuidador API
-*Cuida al cuidador API is a project for Fundación Luzón that aims to put the families and caretakers of ALS patients in contact with companies who undersand the predicament they're in.*
+# Cuidar al cuidador API
+*Cuidar al cuidador API is a project for Fundación Luzón that aims to put the families and caretakers of ALS patients in contact with companies who undersand the predicament they're in.*
 
 ##  Public Endpoints
 ### **GET** *Gets offers from the database*

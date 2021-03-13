@@ -1,0 +1,22 @@
+@import '../../../colors';
+
+nav.MainNavigation{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 12px 12px $accentColor;
+    z-index: 1;
+    height: 93px;
+    a{
+        width: 10%;
+        text-decoration: none;
+        color: $black;
+        h4{
+            font-size: 14px;
+            font-weight:200;
+        }
+        img{
+           height: 50px;
+        }
+    }
+}
