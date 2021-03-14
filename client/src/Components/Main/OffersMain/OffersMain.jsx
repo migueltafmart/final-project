@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import axios from "axios";
 import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 import CategoryNavigation from "../CategoryNavigation/CategoryNavigation";
 import OfferPreview from "./OfferPreview/OfferPreview";
 import "./OffersMain.scss"
-import UserContext from "../../Context/userContext"
 const OffersMain = () => {
   const [offerList, setOfferList] = useState([]);
   const [view, setView] = useState("offers");
   const [category, setCategory] = useState("sectorDigital");
-  const user= useContext(UserContext)
   useEffect(() => {
     axios
       .get("https://cuidaralcuidador.herokuapp.com/api/offers")

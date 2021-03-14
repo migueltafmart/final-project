@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import OffersMain from "../../Components/OffersMain/OffersMain";
+import OffersMain from "../../Components/Main/OffersMain/OffersMain";
 
 const OffersPage = () => {
   return (

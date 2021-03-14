@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginMain.scss";
-import axios from "axios";
+import UserContext from "../../../Context/userContext";
 const LoginMain = () => {
+  const user = useContext(UserContext);
   const logIn = (e) => {
     e.preventDefault();
-    let email = document.querySelector("input[name=email]")
-    let pwd = document.querySelector("input[name=pwd]")
-    if (email.value.length > 0 && pwd.value.length > 0){
-      const requestOptions = {
-        method: 'POST',
-        mode: "no-cors",
-        headers: { 'Content-Type': 'application/json' },
-        body: {email: email, pwd: pwd}
-    };
-      fetch("https://cuidaralcuidador.herokuapp.com/api/login", requestOptions)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    let email = document.querySelector("input[name=email]");
+    let pwd = document.querySelector("input[name=pwd]");
+    if (email.value.length > 0 && pwd.value.length > 0) {
+      user.setUser({
+        userId: 1,
+        role: "admin",
+        displayName: "Miguel Tafur",
+        url:
+          "https://avatars.githubusercontent.com/u/74536669?s=460&u=8657e991803a2d49f98c389e3278e2d6a129b81b&v=4",
+        email: "migueltafmart@gmail.com",
+        hashPw: "10c278beb8a90b7546cb3ae6b0b1ed99",
+        apiKey: "fb56bc9f-6d14-4a88-aa45-90cd1884737f",
+        disp: null,
+        area: null,
+        tlf: null,
+      });
     }
   };
   return (

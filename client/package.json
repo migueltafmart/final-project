@@ -45,5 +45,5 @@
   "devDependencies": {
     "node-sass": "^5.0.0"
   },
-  "proxy": "https://cuidaralcuidador.herokuapp.com/api/"
+  "proxy": "http://localhost:5500"
 }

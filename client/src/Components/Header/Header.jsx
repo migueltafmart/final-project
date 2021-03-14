@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = ({ banner, landing, caretaker }) => {
   return (
     <header>
-      {caretaker ? <MainNavigation caretaker />: <MainNavigation/>}
+      <MainNavigation/>
       {banner ? (
         <div className="img">
           <Link to="/registro">
