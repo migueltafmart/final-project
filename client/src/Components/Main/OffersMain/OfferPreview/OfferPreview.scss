@@ -1,0 +1,38 @@
+@import "../../../colors";
+article.Offer {
+  width: 100%;
+  h3 {
+    text-transform: uppercase;
+    width: 55%;
+    font-weight: 400;
+    color: $secondaryColorDark;
+    border-bottom: 2px dashed $black;
+  }
+  div {
+      display: flex;
+      flex-flow: column;
+    background: $secondaryColorLight;
+    padding: 12px;
+    border-radius: 12px;
+    p {
+      margin: 0;
+    }
+    button{
+        width: 11%;
+        align-self: flex-end;
+        font-weight:bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        border-radius: 10px;
+        padding: 12px;
+        background: $accentColor;
+        border: none;
+        color: $white;
+        margin-top: 12px;
+        &:focus{
+            outline: none;
+            box-shadow: 0 0 12px $primaryColorDark;
+        }
+      }
+    }
+  }

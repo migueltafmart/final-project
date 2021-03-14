@@ -1,13 +1,13 @@
 import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import Main from "../../Components/Main/Main";
+import SignupMain from "../../Components/SignupMain/SignupMain";
 
 const SignupPage = () => {
   return (
     <>
       <Header />
-      <Main />
+      <SignupMain/>
       <Footer />
     </>
   );

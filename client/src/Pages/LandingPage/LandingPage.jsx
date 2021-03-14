@@ -1,12 +1,11 @@
 import React from "react";
 import Header from "../../Components/Header/Header";
-import Main from "../../Components/Main/Main";
+import OffersMain from "../../Components/OffersMain/OffersMain";
 import Footer from "../../Components/Footer/Footer";
 const LandingPage = () => {
   return (
     <>
-      <Header />
-      <Main />
+      <Header landing/>
       <Footer />
     </>
   );
