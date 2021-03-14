@@ -1,0 +1,60 @@
+@import "../../../colors";
+main.Home {
+  > div.wrapper {
+    display: flex;
+    > h2 {
+      width: 100%;
+      border-bottom: 2px solid $primaryColor;
+      padding-bottom: 6px;
+    }
+    flex-flow: column;
+    > div {
+      display: flex;
+      > div {
+        width: 50%;
+        display: flex;
+        flex-flow: column;
+        &:first-child {
+          padding: 0 6px;
+        }
+        > p {
+          width: 100%;
+        }
+        > img {
+          width: 100%;
+        }
+      }
+    }
+    section.objectives {
+      > h2 {
+        text-transform: uppercase;
+        margin: 0;
+        margin-bottom: 12px;
+      }
+      width: 98%;
+      display: flex;
+      flex-flow: column;
+      padding: 12px;
+      background: $primaryColor;
+      border-radius: 12px;
+      margin: 72px 0;
+      > div {
+        display: flex;
+        flex-flow: row;
+        > div {
+          display: flex;
+          background: white;
+          margin: 6px;
+          align-items: center;
+          > span {
+            color: $accentColor;
+            font-weight: 900;
+            font-size: 96px;
+            margin: 0 12px;
+          }
+          display: flex;
+        }
+      }
+    }
+  }
+}

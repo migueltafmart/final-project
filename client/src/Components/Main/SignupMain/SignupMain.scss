@@ -1,0 +1,152 @@
+@import "../../colors";
+
+main.Signup {
+  > form {
+    > div.wrapper {
+      > aside {
+        width: 25%;
+        h2 {
+          border-bottom: 2px solid $primaryColor;
+          padding-bottom: 6px;
+        }
+      }
+      > div.form {
+        h3 {
+          width: 45%;
+          margin-top: 0;
+          font-weight: bold;
+          color: $secondaryColorDark;
+          text-transform: uppercase;
+          padding: 6px;
+          border-bottom: 2px dashed $black;
+          > span {
+            color: $black;
+            font-weight: 100;
+          }
+        }
+        width: 75%;
+        display: flex;
+        flex-flow: column;
+        margin: 24px;
+      }
+      fieldset {
+        background: $secondaryColorLight;
+        border: none;
+        border-radius: 12px;
+        > * {
+          display: block;
+        }
+        div.row {
+          display: flex;
+        }
+
+        div.input {
+          display: flex;
+          flex-flow: column;
+          width: 95%;
+          background: white;
+          margin: 12px;
+          padding: 12px;
+          border-radius: 12px;
+          &.gender {
+            flex-flow: row;
+            justify-content: space-around;
+            align-items: center;
+            input,
+            label {
+              display: inline-flex;
+            }
+          }
+        }
+        input {
+            font-family: inherit;
+          &[type="text"] {
+            width: 100%;
+            display: block;
+            height: 64px;
+            border: none;
+            font-size: 32px;
+          }
+          &[type="tel"] {
+            width: 100%;
+            display: block;
+            height: 64px;
+            border: none;
+            font-size: 32px;
+          }
+          &[type="email"] {
+            width: 100%;
+            display: block;
+            height: 64px;
+            border: none;
+            font-size: 32px;
+          }
+          &[type="password"] {
+            width: 100%;
+            display: block;
+            height: 64px;
+            border: none;
+            font-size: 32px;
+          }
+          &[type="date"] {
+            width: 100%;
+            display: block;
+            height: 64px;
+            border: none;
+            font-size: 32px;
+            color: $secondaryColorDark;
+          }
+
+          &[type="submit"] {
+            height: 45px;
+            width: 15%;
+            margin: 12px;
+            margin-right: 3%;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        textarea {
+            font-family: inherit;
+            border: none;
+            border-radius: 12px;
+            margin: 12px;
+            padding: 12px;
+          width: 94.5%;
+          height: 200px;
+          resize: none;
+          font-size: 16px;
+          &::placeholder{
+              color: $secondaryColorDark;
+          }
+        }
+        &:last-of-type{
+            div.categories{
+                background: white;
+            }
+            div.row{
+                justify-content: space-between;
+                input[type=checkbox]{
+                    margin: 12px;
+                }
+            }
+        }
+      }
+      input[type="submit"] {
+        height: 45px;
+        width: 15%;
+        margin: 12px;
+        margin-right: 0;
+        text-transform: uppercase;
+        color: $white;
+        font-weight: bold;
+        font-family: inherit;
+        background: $accentColor;
+        border: none;
+        border-radius: 12px;
+        align-self: flex-end;
+      }
+    }
+  }
+}

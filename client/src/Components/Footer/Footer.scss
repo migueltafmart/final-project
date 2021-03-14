@@ -46,10 +46,11 @@ footer{
                     margin: 6px;
                     margin-bottom: 0;
                     padding: 0;
+                    font-size: 15px;
                     color: $primaryColor;
                     &:focus{
                         outline: 0;
-                        box-shadow: 0 0 px $primaryColorDark;
+                        box-shadow: 0 0 12px $primaryColorDark;
                     }
                 }
             }

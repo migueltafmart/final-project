@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import Main from "../../Components/Main/Main";
+import HomeMain from "../../Components/Main/HomeMain/HomeMain";
 
 const HomePage = () => {
+
   return <>
-  <Header/>
-  <Main/>
+  <Header banner caretaker/>
+  <HomeMain/>
   <Footer/>
   </>;
 };
