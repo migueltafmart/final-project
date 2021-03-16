@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
-import OfferCard from "./OfferCard/OfferCard";
+import OfferCard from "../OfferCard/OfferCard";
 import "./MyOffersMain.scss";
 import UserContext from "../../../Context/userContext";
 import axios from "axios";
@@ -53,7 +53,7 @@ const MyOffersMain = () => {
             </article>
             <div className="offers">
               {offers.length > 0 ? (
-                offers.map((e, i) => <OfferCard key={i} offer={e} />)
+                offers.map((e, i) => <OfferCard role="company" key={i} offer={e} />)
               ) : (
                 <article>
                   <h2>¿ A qué esperas?<br/>

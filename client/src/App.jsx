@@ -12,7 +12,6 @@ import OffersPageCompany from "./Pages/OffersPageCompany/OffersPageCompany";
 import MatchPage from "./Pages/MatchPage/MatchPage";
 import { UserProvider } from "./Context/userContext";
 import NewOfferPage from "./Pages/NewOfferPage/NewOfferPage";
-import NewOfferMain from "./Components/Main/NewOfferMain/NewOfferMain";
 function App() {
   const [user, setUser] = useState({});
   return (
@@ -87,7 +86,7 @@ function App() {
         </Route>
         <Route path="/empresa/publicar">
           {/* {user.role === "company" ? <NewOfferPage />: <Redirect to="/"/> } */}
-         <NewOfferMain/>
+         <NewOfferPage/>
         </Route>
         <Route path="/matches">
           <MatchPage />

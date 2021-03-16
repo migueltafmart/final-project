@@ -1,6 +1,6 @@
 import React from "react";
 import "./OfferCard.scss";
-const OfferCard = ({ offer }) => {
+const OfferCard = ({ offer, role }) => {
   return (
     <div className="OfferCard">
       <div>
@@ -10,8 +10,14 @@ const OfferCard = ({ offer }) => {
         <p>{offer.jobDesc}</p>
         <p>{offer.hoursADay} horas al día</p>
         <div>
-          <button>Eliminar Oferta</button>
-          <button>Editar oferta</button>
+          {role === "company" ? (
+            <>
+              <button>Eliminar Oferta</button>
+              <button>Editar oferta</button>
+            </>
+          ) : (
+            <button>Me interesa</button>
+          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../colors";
 div.OfferCard {
   width: 49%;
   display: flex;
@@ -19,6 +19,7 @@ div.OfferCard {
     border: 1px solid $secondaryColor;
     border-radius: 0 0 12px 12px;
     padding: 18px;
+    margin-bottom: 12px;
     div:last-child {
       display: flex;
       flex-flow: row-reverse;
