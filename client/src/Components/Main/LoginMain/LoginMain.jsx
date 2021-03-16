@@ -2,32 +2,24 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginMain.scss";
 import UserContext from "../../../Context/userContext";
-const LoginMain = () => {
-  const user = useContext(UserContext);
+import axios from "axios";
+const LoginMain = ({role}) => {
+  const {setUser} = useContext(UserContext);
   const logIn = (e) => {
     e.preventDefault();
     let email = document.querySelector("input[name=email]");
     let pwd = document.querySelector("input[name=pwd]");
     if (email.value.length > 0 && pwd.value.length > 0) {
-      user.setUser({
-        userId: 1,
-        role: "admin",
-        displayName: "Miguel Tafur",
-        url:
-          "https://avatars.githubusercontent.com/u/74536669?s=460&u=8657e991803a2d49f98c389e3278e2d6a129b81b&v=4",
-        email: "migueltafmart@gmail.com",
-        hashPw: "10c278beb8a90b7546cb3ae6b0b1ed99",
-        apiKey: "fb56bc9f-6d14-4a88-aa45-90cd1884737f",
-        disp: null,
-        area: null,
-        tlf: null,
-      });
+      axios.post("http://localhost:5500/api/login", {"email": email.value,"pwd":pwd.value})
+      .then(res => setUser(res.data.response))
+      .catch(err => console.log(err))
     }
   };
   return (
     <main className="Login">
       <div className="wrapper">
         <h2>Por favor para acceder incluye tu correo y contraseña</h2>
+        {role === "caretaker" ? <h4>Log in cuidador</h4>: <h4>Log in empresa</h4> }
         <form onSubmit={logIn}>
           <div>
             <label htmlFor="_email">E-mail</label>
@@ -53,7 +45,7 @@ const LoginMain = () => {
           recibirás un código con el que deberás identificarte cuando entres en
           tu usuario.
         </p>
-        <Link to="/registro">
+        <Link to={role=== "caretaker" ? "/cuidador/registro": "/empresa/registro"}>
           <button>Registrarme</button>
         </Link>
       </div>

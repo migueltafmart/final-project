@@ -1,39 +1,99 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HomeMain.scss";
-const HomeMain = () => {
+import { Link } from "react-router-dom";
+import UserContext from "../../../Context/userContext";
+const HomeMain = ({ role }) => {
+  const {user} = useContext(UserContext)
   return (
     <main className="Home">
       <div className="wrapper">
-        <h2>
-          Nos importa tanto el bienestar del cuidador
-          <br /> como el bienestar del enfermo
-        </h2>
+        {role ? (
+          role === "caretaker" ? (
+            <article>
+              <h2>
+                Nos importa tanto el bienestar del cuidador
+                <br /> como el bienestar del enfermo
+              </h2>
 
-        <div>
-          <div>
-            <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-          </div>
+              <div>
+                <div>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                  </p>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum."
+                  </p>
+                </div>
 
-          <div>
-            <img
-              src="https://journeycare.org/wp-content/uploads/2020/02/how-illness-affects-family-members333.jpg"
-              alt=""
-            />
-          </div>
-        </div>
+                <div>
+                  <img
+                    src="https://journeycare.org/wp-content/uploads/2020/02/how-illness-affects-family-members333.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </article>
+          ) : (
+            <article>
+              <h2>
+                Nos importa tanto el bienestar del cuidador
+                <br /> como el bienestar del enfermo
+              </h2>
+
+              <div>
+                <div>
+                  <h2>¿Por qué colaborar?</h2>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum.
+                  </p>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum."
+                  </p>
+                </div>
+
+                <div>
+                  <h2>¿Cómo funciona?</h2>
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                    irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit anim id est laborum."
+                  </p>
+                  {!user.userId ?<Link to="/empresa/registro">
+                    <button>Registrarse</button>
+                  </Link> : <></>}
+                  
+                  
+                </div>
+              </div>
+            </article>
+          )
+        ) : (
+          <></>
+        )}
+
         <section className="objectives">
           <h2>Objetivos</h2>
           <div>

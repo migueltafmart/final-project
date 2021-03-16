@@ -1,32 +1,93 @@
 import "./App.scss";
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
-import SignupPage from "./Pages/SignupPage/SignupPage";
-import OffersPage from "./Pages/OffersPage/OffersPage";
+import HomePageCaretaker from "./Pages/HomePageCaretaker/HomePageCaretaker";
+import SignupPageCaretaker from "./Pages/SignupPageCaretaker/SignupPageCaretaker";
+import OffersPageCaretaker from "./Pages/OffersPageCaretaker/OffersPageCaretaker";
+import HomePageCompany from "./Pages/HomePageCompany/HomePageCompany";
+import SignupPageCompany from "./Pages/SignupPageCompany/SignupPageCompany";
+import OffersPageCompany from "./Pages/OffersPageCompany/OffersPageCompany";
 import MatchPage from "./Pages/MatchPage/MatchPage";
 import { UserProvider } from "./Context/userContext";
+import NewOfferPage from "./Pages/NewOfferPage/NewOfferPage";
+import NewOfferMain from "./Components/Main/NewOfferMain/NewOfferMain";
 function App() {
   const [user, setUser] = useState({});
   return (
-    <UserProvider value={{user, setUser}}>
+    <UserProvider value={{ user, setUser }}>
       <Switch>
         <Route exact path="/">
-          <LandingPage />
+          {user.role ? (
+            user.role === "caretaker" ? (
+              <Redirect to="/cuidador/inicio" />
+            ) : (
+              <Redirect to="/empresa/inicio" />
+            )
+          ) : (
+            <LandingPage />
+          )}
         </Route>
-        <Route path="/inicio">
-          <HomePage />
+        <Route path="/cuidador/inicio">
+          <HomePageCaretaker />
         </Route>
-        <Route path="/entrar">
-          <LoginPage />
+        <Route path="/cuidador/entrar">
+          {user.role ? (
+            user.role === "caretaker" ? (
+              <Redirect to="/cuidador/inicio" />
+            ) : (
+              <Redirect to="/empresa/inicio" />
+            )
+          ) : (
+            <LoginPage role="caretaker"/>
+          )}
         </Route>
-        <Route path="/registro">
-          <SignupPage />
+        <Route path="/cuidador/registro">
+          {user.role ? (
+            user.role === "caretaker" ? (
+              <Redirect to="/cuidador/inicio" />
+            ) : (
+              <Redirect to="/empresa/inicio" />
+            )
+          ) : (
+            <SignupPageCaretaker/>
+          )}
         </Route>
-        <Route path="/ofertas">
-          <OffersPage />
+        <Route path="/cuidador/ofertas">
+          <OffersPageCaretaker />
+        </Route>
+        <Route path="/empresa/inicio">
+          <HomePageCompany />
+        </Route>
+        <Route path="/empresa/entrar">
+          {user.role ? (
+            user.role === "caretaker" ? (
+              <Redirect to="/cuidador/inicio" />
+            ) : (
+              <Redirect to="/empresa/inicio" />
+            )
+          ) : (
+            <LoginPage role="company"/>
+          )}
+        </Route>
+        <Route path="/empresa/registro">
+          {user.role ? (
+            user.role === "caretaker" ? (
+              <Redirect to="/cuidador/inicio" />
+            ) : (
+              <Redirect to="/empresa/inicio" />
+            )
+          ) : (
+            <SignupPageCompany/>
+          )}
+        </Route>
+        <Route path="/empresa/ofertas">
+          <OffersPageCompany />
+        </Route>
+        <Route path="/empresa/publicar">
+          {/* {user.role === "company" ? <NewOfferPage />: <Redirect to="/"/> } */}
+         <NewOfferMain/>
         </Route>
         <Route path="/matches">
           <MatchPage />

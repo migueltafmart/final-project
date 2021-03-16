@@ -1,21 +1,59 @@
-@import '../../../colors';
+@import "../../../colors";
 
-nav.MainNavigation{
+nav.MainNavigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  align-items: center;
+  box-shadow: 0 12px 12px $secondaryColorDark;
+  height: 93px;
+  a {
+    width: 15%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 12px 12px $secondaryColorDark;
-    height: 93px;
-    a{
-        width: 10%;
-        text-decoration: none;
-        color: $black;
-        h4{
-            font-size: 14px;
-            font-weight:200;
-        }
-        img{
-           height: 50px;
-        }
+    flex-flow: column;
+    text-decoration: none;
+    color: $black;
+    h4 {
+      font-size: 14px;
+      font-weight: 200;
     }
+    &:first-of-type, a.last-of-type {
+      flex-flow: row;
+      img {
+        max-width: 100%;
+        max-height: 70px;
+        
+      }
+    }
+    &.public {
+      margin-right: auto;
+    }
+    img {
+      max-width: 100%;
+      align-self: flex-start;
+      margin-left:12px;
+      max-height: 50px;
+    }
+  }
+}
+ul.ProfileLinks{
+  background: white;
+  padding: 12px;
+  margin: -12px;
+  border-radius: 3px;
+  position: absolute;
+  box-shadow: 0 0 3px $accentColor; 
+  left: 68.5%;
+  z-index: 3;
+  >li{
+    margin-bottom: 6px;
+  }
+  >li >a{
+    color: $black;
+    margin-bottom: 6px;
+  }
 }

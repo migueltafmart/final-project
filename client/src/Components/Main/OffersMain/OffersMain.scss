@@ -1,5 +1,8 @@
 main{
     width: 100%;
+    >div.wrapper{
+        flex-flow: column;
+    }
     section{
         width: 100%;
 }

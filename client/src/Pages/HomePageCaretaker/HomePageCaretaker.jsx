@@ -7,7 +7,7 @@ const HomePage = () => {
 
   return <>
   <Header banner role="caretaker"/>
-  <HomeMain/>
+  <HomeMain role="caretaker"/>
   <Footer/>
   </>;
 };

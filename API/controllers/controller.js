@@ -53,6 +53,7 @@ exports.signUp = async (req, res) => {
 };
 
 exports.logIn = async (req, res) => {
+  console.log(req.body)
   let { email, pwd } = req.body;
   if (regExp.email.test(email) && regExp.pwd.test(pwd)) {
     let response = await db.logIn(email);
@@ -121,7 +122,7 @@ exports.getOffer = async (req, res) => {
   }
 };
 exports.postOffer = async (req, res) => {
-  const { jobTitle, category, hoursADay, jobDesc } = req.body;
+  const { jobTitle, category, hoursADay, jobDesc, area } = req.body;
   let company = await db.getUser(req.params.id);
   if (req.query.apiKey === company.apiKey) {
     if (
@@ -135,6 +136,7 @@ exports.postOffer = async (req, res) => {
         category,
         hoursADay,
         jobDesc,
+        area,
         userId: req.params.id,
       });
       if (typeof response == "string") {
