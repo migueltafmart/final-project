@@ -4,7 +4,7 @@ main.Signup {
   > form {
     > div.wrapper {
       > aside {
-        width: 25%;
+        width: 10%;
         h2 {
           border-bottom: 2px solid $primaryColor;
           padding-bottom: 6px;
@@ -59,7 +59,7 @@ main.Signup {
           }
         }
         input {
-            font-family: inherit;
+          font-family: inherit;
           &[type="text"] {
             width: 100%;
             display: block;
@@ -108,30 +108,37 @@ main.Signup {
           }
         }
         textarea {
-            font-family: inherit;
-            border: none;
-            border-radius: 12px;
-            margin: 12px;
-            padding: 12px;
+          font-family: inherit;
+          border: none;
+          border-radius: 12px;
+          margin: 12px;
+          padding: 12px;
           width: 94.5%;
           height: 200px;
           resize: none;
           font-size: 16px;
-          &::placeholder{
-              color: $secondaryColorDark;
+          &::placeholder {
+            color: $secondaryColorDark;
           }
         }
-        &:last-of-type{
-            div.categories{
-                background: white;
+        &:last-of-type {
+          div#_categories {
+            label > span {
+              color: $white;
             }
-            div.row{
-                justify-content: space-between;
-                input[type=checkbox]{
-                    margin: 12px;
-                }
+            background: $white;
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px;
+          }
+          div.row {
+            justify-content: space-between;
+            input[type="checkbox"] {
+              margin: 12px;
             }
+          }
         }
+        
       }
       input[type="submit"] {
         height: 45px;

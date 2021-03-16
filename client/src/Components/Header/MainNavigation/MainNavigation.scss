@@ -1,13 +1,16 @@
 @import '../../../colors';
 
 nav.MainNavigation{
+    position: fixed;
+    width: 100%;
+    background: $white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0 12px 12px $secondaryColorDark;
     height: 93px;
-    a{
-        width: 10%;
+    a{  
+        margin: 12px;
         text-decoration: none;
         color: $black;
         h4{
@@ -15,7 +18,16 @@ nav.MainNavigation{
             font-weight:200;
         }
         img{
+           max-width: 100%;
            height: 50px;
+        }
+        &.active{
+            font-weight: bold;
+        }
+        &.landing{
+            margin-right: auto;
+            width: 15%;
+            margin-left: 12px;
         }
     }
 }

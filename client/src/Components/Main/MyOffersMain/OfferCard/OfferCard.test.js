@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MyOffersMain from "./MyOffersMain";
+import OfferCard from "./OfferCard";
 
-describe("MyOffersMain", () => {
+describe("OfferCard", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<MyOffersMain />);
+    const wrapper = shallow(<OfferCard />);
     expect(wrapper).toMatchSnapshot();
   });
 });

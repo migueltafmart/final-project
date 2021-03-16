@@ -6,7 +6,7 @@ import HomeMain from "../../Components/Main/HomeMain/HomeMain";
 const HomePage = () => {
 
   return <>
-  <Header banner caretaker/>
+  <Header banner role="caretaker"/>
   <HomeMain/>
   <Footer/>
   </>;

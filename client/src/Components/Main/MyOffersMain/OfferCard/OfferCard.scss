@@ -1,0 +1,39 @@
+@import "../../../../colors";
+div.OfferCard {
+  width: 45%;
+  display: flex;
+  flex-flow: column;
+  div:first-child {
+    h4 {
+      color: $accentColor;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 6px;
+      padding-left: 18px;
+    }
+    border-radius: 12px 12px 0 0;
+    margin: 6px;
+    background: $secondaryColor;
+  }
+  div:nth-child(2) {
+    border: 1px solid $secondaryColor;
+    border-radius: 0 0 12px 12px;
+    margin: 0 6px;
+    padding: 18px;
+    div:last-child {
+      display: flex;
+      flex-flow: row-reverse;
+      button {
+          text-transform: uppercase;
+          background: $accentColor;
+          color: $white;
+          font-weight: bold;
+          font-weight: inherit;
+          margin: 6px;
+          border: none;
+          border-radius: 6px;
+          padding: 12px;
+      }
+    }
+  }
+}
