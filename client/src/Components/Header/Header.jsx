@@ -2,40 +2,32 @@ import React from "react";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import "./Header.scss";
 import { Link } from "react-router-dom";
-const Header = ({ banner, landing, role }) => {
+const Header = ({ banner, landing, caretaker }) => {
   return (
-    <>
-      <header>
-        {role ? <MainNavigation role={role} /> : <MainNavigation />}
-      </header>
+    <header>
+      <MainNavigation/>
       {banner ? (
         <div className="img">
-          {role === "caretaker" ? (
-            <Link to={`/cuidador/registro`}>
-              <button>¡Regístrate!</button>
-            </Link>
-          ) : (
-            <Link to={`/empresa/registro`}>
-              <button>¡Regístrate!</button>
-            </Link>
-          )}
+          <Link to="/registro">
+            <button>¡Regístrate!</button>
+          </Link>
         </div>
       ) : (
         <></>
       )}
       {landing ? (
         <div className="landing">
-          <Link to="/empresa/inicio">
+          <Link to="/inicio">
             <button>Empresa</button>
           </Link>
-          <Link to="/cuidador/inicio">
+          <Link to="/inicio">
             <button>Cuidador</button>
           </Link>
         </div>
       ) : (
         <></>
       )}
-    </>
+    </header>
   );
 };
 

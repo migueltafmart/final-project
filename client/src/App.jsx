@@ -2,13 +2,10 @@ import "./App.scss";
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
-import HomePageCaretaker from "./Pages/HomePageCaretaker/HomePageCaretaker";
-import HomePageCompany from "./Pages/HomePageCompany/HomePageCompany";
+import HomePage from "./Pages/HomePage/HomePage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
-import SignupPageCaretaker from "./Pages/SignupPageCaretaker/SignupPageCaretaker";
-import SignupPageCompany from "./Pages/SignupPageCompany/SignupPageCompany";
-import OffersPageCaretaker from "./Pages/OffersPageCaretaker/OffersPageCaretaker";
-import OffersPageCompany from "./Pages/OffersPageCompany/OffersPageCompany";
+import SignupPage from "./Pages/SignupPage/SignupPage";
+import OffersPage from "./Pages/OffersPage/OffersPage";
 import MatchPage from "./Pages/MatchPage/MatchPage";
 import { UserProvider } from "./Context/userContext";
 function App() {
@@ -19,26 +16,17 @@ function App() {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route path="/cuidador/inicio">
-          <HomePageCaretaker />
-        </Route>
-        <Route path="/empresa/inicio">
-          <HomePageCompany />
+        <Route path="/inicio">
+          <HomePage />
         </Route>
         <Route path="/entrar">
           <LoginPage />
         </Route>
-        <Route path="/cuidador/registro">
-          <SignupPageCaretaker />
+        <Route path="/registro">
+          <SignupPage />
         </Route>
-        <Route path="/empresas/registro">
-          <SignupPageCompany />
-        </Route>
-        <Route path="/cuidador/ofertas">
-          <OffersPageCaretaker />
-        </Route>
-        <Route path="/empresa/ofertas">
-          <OffersPageCompany />
+        <Route path="/ofertas">
+          <OffersPage />
         </Route>
         <Route path="/matches">
           <MatchPage />

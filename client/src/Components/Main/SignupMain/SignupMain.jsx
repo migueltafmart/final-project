@@ -2,7 +2,7 @@ import React from "react";
 import "./SignupMain.scss";
 const SignupMain = () => {
   return (
-    <main className="Signup nobanner">
+    <main className="Signup">
       <form action="">
         <div className="wrapper">
           <aside>
@@ -79,11 +79,10 @@ const SignupMain = () => {
             </fieldset>
             <h3>Tipos de Trabajo y disponibilidad</h3>
             <fieldset>
-              
-              <div id="_categories">
               <label htmlFor="_categories">
                 Categorías <span>Selecciona las que más te interesen</span>
               </label>
+              <div id="_categories">
                 <div className="row">
                   <div>
                     <input type="checkbox" name="sectorDigital" id="_sd" />

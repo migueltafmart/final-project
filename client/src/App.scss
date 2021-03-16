@@ -1,23 +1,20 @@
 @import "./colors";
 
-ul {
-  list-style: none;
-  padding-left: 0;
-  li {
-    text-indent: none;
-  }
+ul{
+    list-style: none;
+    padding-left: 0;
+    li{
+        text-indent: none;
+    }
 }
-a {
-  text-decoration: none;
+a{
+    text-decoration: none;
 }
-div.wrapper {
-  width: 1130px;
-  margin: 0 auto;
-  display: flex;
+div.wrapper{
+    width: 1130px;
+    margin: 0 auto;
+    display: flex;
 }
-main {
-  margin: 54px 0;
-  &.nobanner {
-    margin-top: 161px;
-  }
+main{
+    margin: 54px 0 ;
 }
