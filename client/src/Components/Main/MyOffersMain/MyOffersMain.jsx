@@ -4,17 +4,26 @@ import OfferCard from "../OfferCard/OfferCard";
 import "./MyOffersMain.scss";
 import UserContext from "../../../Context/userContext";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const MyOffersMain = () => {
   const { user } = useContext(UserContext);
   const [offers, setOffers] = useState([]);
   const [view, setView] = useState("offers");
+  const v = new URLSearchParams(useLocation().search).get('v');
+  useEffect(() => {
+    if (v){
+      setView("candidates")
+    }else{
+      setView("offers")
+    }
+  }, [v])
   useEffect(() => {
     axios
       .get(`http://localhost:5500/api/offers/${user.userId}`)
       .then((res) => setOffers([...res.data.response]));
   }, [user]);
   return (
+    <>
     <main className="MyOffers">
       <div className="wrapper">
         <h2>Bienvenido</h2>
@@ -53,7 +62,7 @@ const MyOffersMain = () => {
             </article>
             <div className="offers">
               {offers.length > 0 ? (
-                offers.map((e, i) => <OfferCard role="company" key={i} offer={e} />)
+                offers.map((e, i) => <OfferCard role="company" key={i} offer={e}/>)
               ) : (
                 <article>
                   <h2>¿ A qué esperas?<br/>
@@ -69,6 +78,7 @@ const MyOffersMain = () => {
         )}
       </div>
     </main>
+    </>
   );
 };
 

@@ -1,13 +1,14 @@
 import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
-import OffersMain from "../../Components/Main/OffersMain/OffersMain";
+import MatchMain from "../../Components/Main/MatchMain/MatchMain";
+
 
 const MatchPage = () => {
   return (
     <>
-      <Header />
-      <OffersMain />
+      <Header role="caretaker" banner />
+      <MatchMain/>
       <Footer />
     </>
   );

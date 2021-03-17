@@ -29,6 +29,13 @@ const MainNavigation = ({ role }) => {
                   <br /> de trabajo activas
                 </h4>
               </Link>
+              <Link to="/">
+                <h4>
+                  ¿Cómo compaginarlo
+                  <br />
+                  con cada fase?
+                </h4>
+              </Link>
               {user.displayName ? (
                 <Link to={`/cuidador/perfil?apiKey=${user.apiKey}`}>
                   <h4>
@@ -44,15 +51,7 @@ const MainNavigation = ({ role }) => {
                     Registra tu perfil <br /> / Entrar
                   </h4>
                 </Link>
-              )}
-
-              <Link to="/">
-                <h4>
-                  ¿Cómo compaginarlo
-                  <br />
-                  con cada fase?
-                </h4>
-              </Link>
+              )}           
               <a href="https://ffluzon.org">
                 <img src={logoL} alt="Fundación Luzón" />{" "}
               </a>
@@ -124,7 +123,7 @@ const MainNavigation = ({ role }) => {
         )}
       </nav>
       {profileLinks ? (
-        user.role === "admin" ? (
+        user.role === "company" ? (
           <ul className="ProfileLinks">
             <li>
               <Link to="/empresa/perfil">Mi Perfil</Link>

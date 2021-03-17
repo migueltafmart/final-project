@@ -3,11 +3,11 @@ import Footer from "../../Components/Footer/Footer";
 import Header from "../../Components/Header/Header";
 import NewOfferMain from "../../Components/Main/NewOfferMain/NewOfferMain";
 
-const NewOfferPage = () => {
+const NewOfferPage = ({edit}) => {
   return (
     <>
       <Header banner role="company" />
-      <NewOfferMain/>
+      {edit ? <NewOfferMain edit />: <NewOfferMain/>}
       <Footer />
     </>
   );

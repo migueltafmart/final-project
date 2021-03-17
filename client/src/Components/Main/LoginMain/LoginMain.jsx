@@ -23,7 +23,7 @@ const LoginMain = ({role}) => {
         <form onSubmit={logIn}>
           <div>
             <label htmlFor="_email">E-mail</label>
-            <input autoFocus type="text" name="email" id="_email" />
+            <input tabIndex="1" autoFocus type="text" name="email" id="_email" />
           </div>
           <div>
             <label htmlFor="_pwd">Contraseña</label>

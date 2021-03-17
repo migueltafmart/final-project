@@ -24,7 +24,8 @@ main.Offers{
         }
         >div{
             height: 800px;
-            overflow: hidden;
+            overflow-y: scroll;
+            overflow-x: hidden;
             display: flex;
             flex-flow: column;
             width: 65%;

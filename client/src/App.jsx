@@ -85,11 +85,13 @@ function App() {
           <OffersPageCompany />
         </Route>
         <Route path="/empresa/publicar">
-          {/* {user.role === "company" ? <NewOfferPage />: <Redirect to="/"/> } */}
-         <NewOfferPage/>
+          {user.role === "company" ? <NewOfferPage />: <Redirect to="/"/> }
         </Route>
-        <Route path="/matches">
-          <MatchPage />
+        <Route path="/empresa/editar/:offerId">
+          {user.role === "company" ? <NewOfferPage edit />: <Redirect to="/"/> }
+        </Route>
+        <Route path="/cuidador/match/:offerId">
+        {user.role === "caretaker" ? <MatchPage />: <Redirect to="/"/> }
         </Route>
       </Switch>
     </UserProvider>

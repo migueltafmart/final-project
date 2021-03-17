@@ -10,7 +10,6 @@ const pool = mariadb.createPool({
   connectionLimit: 5,
   database: "umbrela",
 });
-
 //*CHECK email
 exports.checkEmail = async (email) => {
   let conn;
@@ -259,6 +258,7 @@ exports.getOffer = async (offerId) => {
       payload = null;
     } finally {
       if (conn) conn.end();
+      console.log(payload)
       return payload;
     }
   } else {
@@ -316,10 +316,12 @@ exports.putOffer = async (
     let payload;
     try {
       conn = await pool.getConnection();
-      await conn.query(
+      let res = await conn.query(
         "UPDATE offers SET jobTitle=?, category=?, hoursADay=?, jobDesc=?, resolved=? WHERE offerId=?",
         [jobTitle, category, hoursADay, jobDesc, resolved || false, offerId]
       );
+      console.log(res)
+      console.log(offerId)
       let offer = await this.getOffer(offerId);
       payload = offer;
     } catch (err) {
@@ -327,6 +329,7 @@ exports.putOffer = async (
       payload = null;
     } finally {
       if (conn) conn.end();
+      console.log(payload)
       return payload;
     }
   } else {
