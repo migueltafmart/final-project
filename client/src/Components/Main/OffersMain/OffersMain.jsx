@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import SecondaryNavigation from "../SecondaryNavigation/SecondaryNavigation";
 import CategoryNavigation from "../CategoryNavigation/CategoryNavigation";
@@ -6,11 +6,15 @@ import "./OffersMain.scss";
 import OfferCard from "../OfferCard/OfferCard";
 import Popup from "../Popup/Popup";
 import { Link } from "react-router-dom";
+import LoginMain from "../LoginMain/LoginMain";
+import UserContext from "../../../Context/userContext";
 const OffersMain = () => {
+  const { user } = useContext(UserContext);
   const [offerList, setOfferList] = useState([]);
   const [view, setView] = useState("offers");
   const [category, setCategory] = useState("sectorDigital");
   const [popUp, setPopUp] = useState(false);
+  const [login, setLogin] = useState(false);
   useEffect(() => {
     axios
       .get("https://cuidaralcuidador.herokuapp.com/api/offers")
@@ -39,16 +43,20 @@ const OffersMain = () => {
           otros={() => setCategory("otros")}
           sinOrdenador={() => setCategory("sinOrdenador")}
         />
-        <div className="wrapper">
+        {!user.userId ? (
+          <div className="wrapper">
             <p>
               Recuerda que para poder solicitar un puesto de trabajo, primero
               debes estar registrado
             </p>
             <Link to="/cuidador/registro">
-              <button>Registrarme</button>
+              <button onClick={()=>setLogin(!login)}>Registrarme</button>
             </Link>
-        </div>
-        
+          </div>
+        ) : (
+          <></>
+        )}
+
         <div className="wrapper">
           <aside>
             {category === "sectorDigital" ? (
@@ -61,7 +69,7 @@ const OffersMain = () => {
               </>
             ) : category === "marketingOnline" ? (
               <>
-                <h2>Marketing On-line</h2>{" "}
+                <h2>Marketing On-line</h2>
                 <img
                   src="https://blog.hubspot.es/hubfs/estrategia%20marketing%20digital-1.jpg"
                   alt="marketing online"
@@ -101,7 +109,8 @@ const OffersMain = () => {
                     <OfferCard
                       key={i}
                       offer={offer}
-                      setPopUp={() => setPopUp(!popUp)}
+                      login={login}
+                      setLogin={() => setLogin(!login)}
                     />
                   ))
               ) : (
@@ -139,8 +148,18 @@ const OffersMain = () => {
               </section>
             )}
           </div>
+          {login ? (
+            <LoginMain
+              modal
+              setLogin={() => setLogin(!login)}
+              role="caretaker"
+            />
+          ) : (
+            <></>
+          )}
         </div>
       </main>
+
       {popUp ? (
         <Popup action="delete" setPopUp={() => setPopUp(false)} />
       ) : (

@@ -5,7 +5,7 @@ import SignupCompanyMain from "../../Components/Main/SignupCompanyMain/SignupCom
 const SignupPage = () => {
   return (
     <>
-      <Header role="company" />
+      <Header active="login" role="company" />
       <SignupCompanyMain/>
       <Footer />
     </>

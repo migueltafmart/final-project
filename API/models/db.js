@@ -144,7 +144,6 @@ exports.getUser = async (userId) => {
       payload = null;
     } finally {
       if (conn) conn.end();
-      console.log(payload)
       return payload;
     }
   } else {
@@ -258,7 +257,6 @@ exports.getOffer = async (offerId) => {
       payload = null;
     } finally {
       if (conn) conn.end();
-      console.log(payload)
       return payload;
     }
   } else {
@@ -316,12 +314,10 @@ exports.putOffer = async (
     let payload;
     try {
       conn = await pool.getConnection();
-      let res = await conn.query(
+      await conn.query(
         "UPDATE offers SET jobTitle=?, category=?, hoursADay=?, jobDesc=?, resolved=? WHERE offerId=?",
         [jobTitle, category, hoursADay, jobDesc, resolved || false, offerId]
       );
-      console.log(res)
-      console.log(offerId)
       let offer = await this.getOffer(offerId);
       payload = offer;
     } catch (err) {
@@ -329,7 +325,6 @@ exports.putOffer = async (
       payload = null;
     } finally {
       if (conn) conn.end();
-      console.log(payload)
       return payload;
     }
   } else {
@@ -602,7 +597,7 @@ exports.putEducation = async (eduId, { eduTitle, eduLevel, eduDesc }) => {
     let payload;
     try {
       conn = await pool.getConnection();
-      let res = await conn.query(
+      await conn.query(
         "UPDATE education SET eduTitle=?, eduLevel=?, eduDesc=? WHERE eduId= ?;",
         [eduTitle, eduLevel, eduDesc, eduId]
       );
@@ -634,7 +629,7 @@ exports.putExperience = async (
     let payload;
     try {
       conn = await pool.getConnection();
-      let res = await conn.query(
+      await conn.query(
         "UPDATE experience SET expTitle=?, expLength=?, expDesc=?, category=? WHERE expId=?;",
         [expTitle, expLength, expDesc, category, expId]
       );

@@ -6,7 +6,7 @@ import MyOffersMain from "../../Components/Main/MyOffersMain/MyOffersMain";
 const OffersPageCompany = () => {
   return (
     <>
-      <Header banner role="company"/>
+      <Header active="offers" banner role="company"/>
       <MyOffersMain />
       <Footer />
     </>

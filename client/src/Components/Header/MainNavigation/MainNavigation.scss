@@ -30,6 +30,42 @@ nav.MainNavigation {
       }
     }
     &.public {
+      margin-left: auto;
+    }
+    &.active {
+      color: $secondaryColorDark;
+      h4{
+        font-weight: bold !important;
+      }
+      
+    }
+    img {
+      max-width: 100%;
+      align-self: flex-start;
+      margin-left:12px;
+      max-height: 50px;
+    }
+  }
+  span {
+    cursor:pointer;
+    width: 15%;
+    display: flex;
+    flex-flow: column;
+    text-decoration: none;
+    color: $black;
+    h4 {
+      font-size: 14px;
+      font-weight: 200;
+    }
+    &:first-of-type, a.last-of-type {
+      flex-flow: row;
+      img {
+        max-width: 100%;
+        max-height: 70px;
+        
+      }
+    }
+    &.public {
       margin-right: auto;
     }
     img {

@@ -4,6 +4,10 @@ main.Login{
     width: 784px;
     flex-flow: column;
     align-items: flex-start;
+    >span{
+      cursor: pointer;
+      align-self: flex-end;
+    }
     > h2 {
       width: 50%;
       border-bottom: 2px solid $primaryColor;

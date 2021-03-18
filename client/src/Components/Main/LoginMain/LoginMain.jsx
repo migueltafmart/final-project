@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./LoginMain.scss";
 import UserContext from "../../../Context/userContext";
 import axios from "axios";
-const LoginMain = ({role}) => {
+const LoginMain = ({role, modal, setLogin}) => {
   const {setUser} = useContext(UserContext);
   const logIn = (e) => {
     e.preventDefault();
@@ -11,13 +11,20 @@ const LoginMain = ({role}) => {
     let pwd = document.querySelector("input[name=pwd]");
     if (email.value.length > 0 && pwd.value.length > 0) {
       axios.post("http://localhost:5500/api/login", {"email": email.value,"pwd":pwd.value})
-      .then(res => setUser(res.data.response))
+      .then(res => {
+        setUser(res.data.response)
+        if(modal){
+          setLogin()
+        }
+        })
       .catch(err => console.log(err))
+
     }
   };
   return (
     <main className="Login">
       <div className="wrapper">
+        {modal ? <span onClick={setLogin}>x</span>:<></>}
         <h2>Por favor para acceder incluye tu correo y contraseña</h2>
         {role === "caretaker" ? <h4>Log in cuidador</h4>: <h4>Log in empresa</h4> }
         <form onSubmit={logIn}>
@@ -29,7 +36,6 @@ const LoginMain = ({role}) => {
             <label htmlFor="_pwd">Contraseña</label>
             <input type="password" name="pwd" id="_pwd" />
           </div>
-
           <input type="submit" value="Entrar" />
         </form>
         <h2>

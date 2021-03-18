@@ -15,14 +15,14 @@ const Popup = ({ action, self, setPopup }) => {
       <div className="wrapper">
         {action === "delete" ? (
           <>
-            <button onClick={setPopup}>X</button>
+            <button onClick={setPopup}>x</button>
             <h2>¿De verdad quieres borrar esta oferta?</h2>
             <button onClick={deleteSelf}>Eliminar Oferta</button>
           </>
         ) : action === "success" ? (
           <>
             <Link to="/empresa/ofertas">
-              <button>X</button>
+              <button>x</button>
             </Link>
             <h2>¡Tu oferta ha sido publicada!</h2>
             <Link to="/empresa/ofertas">
@@ -32,7 +32,7 @@ const Popup = ({ action, self, setPopup }) => {
         ) : action === "edit" ? (
           <>
             <Link to="/empresa/ofertas">
-              <button>X</button>
+              <button>x</button>
             </Link>
             <h2>¡Tu oferta ha sido editada!</h2>
             <Link to="/empresa/ofertas">

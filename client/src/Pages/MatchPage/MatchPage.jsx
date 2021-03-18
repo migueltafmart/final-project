@@ -7,7 +7,7 @@ import MatchMain from "../../Components/Main/MatchMain/MatchMain";
 const MatchPage = () => {
   return (
     <>
-      <Header role="caretaker" banner />
+      <Header active="offers" role="caretaker" banner />
       <MatchMain/>
       <Footer />
     </>

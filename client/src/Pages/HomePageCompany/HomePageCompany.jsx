@@ -6,8 +6,8 @@ import HomeMain from "../../Components/Main/HomeMain/HomeMain";
 const HomePage = () => {
 
   return <>
-  <Header banner role="company"/>
-  <HomeMain role="company"/>
+  <Header active="start" banner role="company"/>
+  <HomeMain  role="company"/>
   <Footer/>
   </>;
 };

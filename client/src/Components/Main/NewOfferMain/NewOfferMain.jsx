@@ -62,7 +62,7 @@ const NewOfferMain = ({ edit }) => {
             area: "madrid",
           }
         )
-        .then((res) => setPopUp(true))
+        .then((res) => {setPopUp(true)})
         .catch((err) => console.log(err));
     }
   };
@@ -113,7 +113,6 @@ const NewOfferMain = ({ edit }) => {
             <div>
               <label htmlFor="_hd">Horario</label>
               <input
-                
                 defaultValue={offer.hoursADay ? offer.hoursADay : ""}
                 name="hoursADay"
                 id="_hd"
@@ -122,7 +121,6 @@ const NewOfferMain = ({ edit }) => {
             <div>
               <label htmlFor="_jd">Descripción de la oferta</label>
               <textarea
-                
                 defaultValue={offer.jobDesc ? offer.jobDesc.split("|")[0] : ""}
                 name="jobDesc"
                 id="_jd"

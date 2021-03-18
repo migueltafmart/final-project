@@ -38,7 +38,7 @@ const SignupCompanyMain = () => {
               </div>
               <textarea
                 name="expDesc"
-                placeholder="Cuéntanos tu experiencia Laboral"
+                placeholder="¿Por qué quieres formar parte del proyecto?"
               ></textarea>
             </fieldset>
             <input type="submit" value="Enviar" />

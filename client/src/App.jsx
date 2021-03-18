@@ -82,7 +82,8 @@ function App() {
           )}
         </Route>
         <Route path="/empresa/ofertas">
-          <OffersPageCompany />
+          {user.userId ?  <OffersPageCompany />:<Redirect to="/empresa/entrar" />}
+         
         </Route>
         <Route path="/empresa/publicar">
           {user.role === "company" ? <NewOfferPage />: <Redirect to="/"/> }

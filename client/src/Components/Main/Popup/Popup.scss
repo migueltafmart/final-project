@@ -32,6 +32,7 @@ article.Popup{
             font-size:16px;
             text-align: center;
             margin: 48px;
+            text-transform:capitalize;
         }
     }
 }
@@ -40,6 +41,7 @@ article.Popup.edit{
     padding-bottom: 24px;
     a:first-of-type{
         align-self: flex-end;
+        font-family: inherit;
         button{
             background:transparent
 

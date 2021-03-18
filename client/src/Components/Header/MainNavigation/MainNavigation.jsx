@@ -4,7 +4,8 @@ import "./MainNavigation.scss";
 import logoCc from "../../../img/logo-cc.png";
 import logoL from "../../../img/logo-l.png";
 import UserContext from "../../../Context/userContext";
-const MainNavigation = ({ role }) => {
+const MainNavigation = ({ role, active }) => {
+  console.log(active);
   const { user } = useContext(UserContext);
   const [profileLinks, setProfileLinks] = useState(false);
   return (
@@ -16,20 +17,26 @@ const MainNavigation = ({ role }) => {
               <Link to="/">
                 <img src={logoCc} alt="Cuidar al cuidador" />
               </Link>
-              <Link to="/cuidador/inicio">
+              <Link
+                className={active === "start" ? "active" : ""}
+                to="/cuidador/inicio"
+              >
                 <h4>
                   ¿Qué es
                   <br />
                   "Cuidar al cuidador"?
                 </h4>
               </Link>
-              <Link to="/cuidador/ofertas">
+              <Link
+                className={active === "offers" ? "active" : ""}
+                to="/cuidador/ofertas"
+              >
                 <h4>
                   Consulta las ofertas
                   <br /> de trabajo activas
                 </h4>
               </Link>
-              <Link to="/">
+              <Link className={active === "learn" ? "active" : ""} to="/">
                 <h4>
                   ¿Cómo compaginarlo
                   <br />
@@ -37,21 +44,26 @@ const MainNavigation = ({ role }) => {
                 </h4>
               </Link>
               {user.displayName ? (
-                <Link to={`/cuidador/perfil?apiKey=${user.apiKey}`}>
+                <span
+                  className={active === "login" ? "active" : ""}
+                  onClick={() => setProfileLinks(true)}
+                >
                   <h4>
                     Hola
                     <br />
                     {user.displayName.split(" ")[0]}
-                    <button>Más</button>
                   </h4>
-                </Link>
+                </span>
               ) : (
-                <Link to="/cuidador/entrar">
+                <Link
+                  className={active === "login" ? "active" : ""}
+                  to="/cuidador/entrar"
+                >
                   <h4>
                     Registra tu perfil <br /> / Entrar
                   </h4>
                 </Link>
-              )}           
+              )}
               <a href="https://ffluzon.org">
                 <img src={logoL} alt="Fundación Luzón" />{" "}
               </a>
@@ -61,41 +73,57 @@ const MainNavigation = ({ role }) => {
               <Link to="/">
                 <img src={logoCc} alt="Cuidar al cuidador" />
               </Link>
-              <Link to="/empresa/inicio">
+              <Link
+                className={active === "start" ? "active" : ""}
+                to="/empresa/inicio"
+              >
                 <h4>
                   ¿Qué es
                   <br />
                   "Cuidar al cuidador"?
                 </h4>
               </Link>
-              <Link to="/empresa/ofertas">
-                <h4>
-                  Tus ofertas <br />/ Candidatos
-                </h4>
-              </Link>
-              <Link to="/empresa/faq">
+              {user.userId ? (
+                <Link
+                  className={active === "offers" ? "active" : ""}
+                  to="/empresa/ofertas"
+                >
+                  <h4>
+                    Tus ofertas <br />/ Candidatos
+                  </h4>
+                </Link>
+              ) : (
+                <></>
+              )}
+
+              <Link
+                className={active === "faq" ? "active" : ""}
+                to="/empresa/faq"
+              >
                 <h4>
                   Preguntas <br />
                   frecuentes
                 </h4>
               </Link>
               {user.displayName ? (
-                <Link to={`/empresa/perfil?apiKey=${user.apiKey}`}>
+                <span
+                  className={active === "login" ? "active" : ""}
+                  onClick={() => setProfileLinks(true)}
+                >
                   <h4>
                     Hola
                     <br />
                     {user.displayName}
-                    <button onMouseEnter={() => setProfileLinks(!profileLinks)}>
-                      Más
-                    </button>
                   </h4>
-                </Link>
+                </span>
               ) : (
-                <Link to="/empresa/entrar">
+                <Link
+                  className={active === "login" ? "active" : ""}
+                  to="/empresa/entrar"
+                >
                   <h4>
                     Registrarme
-                    <br />
-                    / Entrar
+                    <br />/ Entrar
                   </h4>
                 </Link>
               )}
@@ -109,13 +137,28 @@ const MainNavigation = ({ role }) => {
             <Link to="/">
               <img src={logoCc} alt="Cuidar al cuidador" />
             </Link>
-            <Link className="public" to="/cuidador/inicio">
-              <h4>
-                ¿Qué es
-                <br />
-                "Cuidar al cuidador"?
-              </h4>
-            </Link>
+            {user.displayName ? (
+              <span
+                className={active === "login" ? "active public" : "public"}
+                onClick={() => setProfileLinks(true)}
+              >
+                <h4>
+                  Hola
+                  <br />
+                  {user.displayName}
+                </h4>
+              </span>
+            ) : (
+              <Link
+                className={active === "login" ? "active public" : "public"}
+                to={`cuidador/entrar`}
+              >
+                <h4>
+                  Registrarme
+                  <br />/ Entrar
+                </h4>
+              </Link>
+            )}
             <a href="https://ffluzon.org">
               <img src={logoL} alt="Fundación Luzón" />{" "}
             </a>
@@ -124,7 +167,10 @@ const MainNavigation = ({ role }) => {
       </nav>
       {profileLinks ? (
         user.role === "company" ? (
-          <ul className="ProfileLinks">
+          <ul
+            onMouseLeave={() => setProfileLinks(false)}
+            className="ProfileLinks"
+          >
             <li>
               <Link to="/empresa/perfil">Mi Perfil</Link>
             </li>
@@ -136,7 +182,10 @@ const MainNavigation = ({ role }) => {
             </li>
           </ul>
         ) : (
-          <ul className="ProfileLinks">
+          <ul
+            onMouseLeave={() => setProfileLinks(false)}
+            className="ProfileLinks"
+          >
             <li>
               <Link to="/cuidador/perfil">Mi Perfil</Link>
             </li>

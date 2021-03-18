@@ -1,0 +1,29 @@
+@import "../../../colors";
+main.Match {
+    margin-top: -48px;
+  div.wrapper {
+    background: $secondaryColorLight;
+    border-radius: 12px;
+    margin-top: -48px;
+    flex-flow: column;
+    align-items:center;
+    > * {
+      text-align: center;
+    }
+    > p{
+        font-size: 18px;
+        &:last-of-type{
+            margin-bottom: 48px;
+        }
+    }
+    >h3 > span{
+        text-transform: uppercase;
+        font-weight: 500;
+        color: $accentColor;
+    }
+    >span.Border{
+        width: 75%;
+        border-bottom: 2px dashed $black;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import "../../../colors";
+main.Landing {
+  div.wrapper {
+    flex-flow: column;
+    h2{
+        padding-bottom: 6px;
+        border-bottom: 2px solid $primaryColor;
+    }
+    div {
+      article {
+        margin: 0 24px 0 0;
+        border-radius: 12px;
+        display: flex;
+        flex-flow: column;
+        background: $secondaryColor;
+        padding: 0 24px;
+        padding-bottom: 36px;
+        div{
+            h2{
+                font-size: 20px;
+                margin: 0 6px;
+                color: $secondaryColorDark;
+                border: none;
+            }
+            >p{
+                margin-top: 0px;
+            }
+            display: flex;
+            flex-flow: column;
+            &:last-of-type{
+              background: $white;
+              padding: 12px 72px;  
+
+            }
+            &:first-of-type{
+                flex-flow: row;
+                align-items: center;
+                span{
+                    font-size: 96px;
+                    color: $accentColor;
+                    font-weight: 600;
+                }
+                p{
+                    font-size: 25px;
+                    margin-left: 12px;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                }
+            }
+        }
+      }
+      display: flex;
+    }
+  }
+}

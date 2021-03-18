@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Footer.scss";
 import logoCc from "../../img/logo-cc.png";
 import logoL from "../../img/logo-l.png";
@@ -26,27 +25,27 @@ const Footer = () => {
         </div>
         <div className="column">
           <div className="socials">
-            <a href="#">
+            <a href="https://www.facebook.com/FundacionLuzon/">
               <button>
                 <FontAwesomeIcon icon={faFacebookF} size="lg" />
               </button>
             </a>
-            <a href="#">
+            <a href="https://twitter.com/fundacionluzon?lang=es">
               <button>
                 <FontAwesomeIcon icon={faTwitter} size="lg" />
               </button>
             </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/fundaci%C3%B3n-francisco-luz%C3%B3n-775304157/?originalSubdomain=es">
               <button>
                 <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
               </button>
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/fundacionluzon/">
               <button>
                 <FontAwesomeIcon icon={faInstagram} size="lg" />
               </button>
             </a>
-            <a href="#">
+            <a href="https://www.youtube.com/channel/UC1yT9BSr8aTC1EXcse1Ap7w">
               <button>
                 <FontAwesomeIcon icon={faYoutube} size="lg" />
               </button>
@@ -58,28 +57,28 @@ const Footer = () => {
           <h4>Accesos Directos:</h4>
           <ul>
             <li>
-              <a href="#">ELA: Esclerosis Lateral Amiotrófica</a>
+              <a href="https://ffluzon.org/ela/">ELA: Esclerosis Lateral Amiotrófica</a>
             </li>
             <li>
-              <a href="#">Calidad de Vida</a>
+              <a href="https://ffluzon.org/calidad-de-vida/">Calidad de Vida</a>
             </li>
             <li>
-              <a href="#">Fundación</a>
+              <a href="https://ffluzon.org/francisco-luzon/">Fundación</a>
             </li>
             <li>
-              <a href="#">Investigación</a>
+              <a href="https://ffluzon.org/investigacion/">Investigación</a>
             </li>
             <li>
-              <a href="#">Proyectos por la ELA</a>
+              <a href="https://ffluzon.org/proyectos/">Proyectos por la ELA</a>
             </li>
             <li>
-              <a href="#">Actualidad</a>
+              <a href="https://ffluzon.org/actualidad/">Actualidad</a>
             </li>
             <li>
-              <a href="#">Colabora</a>
+              <a href="https://ffluzon.org/colabora-ela/">Colabora</a>
             </li>
             <li>
-              <a href="#">Contanto</a>
+              <a href="https://ffluzon.org/contacto/">Contanto</a>
             </li>
           </ul>
         </div>
@@ -93,9 +92,9 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <Link to="/legal">Aviso Legal</Link>
-        <Link to="/cookies">Política de cookies</Link>
-        <Link to="/privacidad">Política de privacidad</Link>
+        <a href="https://ffluzon.org/aviso-legal/">Aviso Legal</a>
+        <a href="https://ffluzon.org/politica-de-cookies/">Política de cookies</a>
+        <a href="https://ffluzon.org/politica-de-privacidad/">Política de privacidad</a>
       </div>
     </footer>
   );

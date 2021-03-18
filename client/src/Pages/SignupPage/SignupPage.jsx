@@ -6,7 +6,7 @@ import SignupMain from "../../Components/Main/SignupMain/SignupMain";
 const SignupPage = () => {
   return (
     <>
-      <Header />
+      <Header active="login" />
       <SignupMain/>
       <Footer />
     </>

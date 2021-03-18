@@ -3,16 +3,16 @@ import MainNavigation from "./MainNavigation/MainNavigation";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import UserContext from "../../Context/userContext";
-const Header = ({ banner, landing, role }) => {
+const Header = ({ banner, landing, role, active }) => {
   const {user} = useContext(UserContext);
   return (
     <>
       <header>
         {role ? (
           role === "caretaker" ? (
-            <MainNavigation role="caretaker" />
+            <MainNavigation active={active} role="caretaker" />
           ) : (
-            <MainNavigation role="company" />
+            <MainNavigation active={active} role="company" />
           )
         ) : (
           <MainNavigation />

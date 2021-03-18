@@ -6,7 +6,7 @@ import LoginMain from "../../Components/Main/LoginMain/LoginMain";
 const LoginPage = ({role}) => {
   return (
     <>
-      <Header role={role} />
+      <Header active="login" role={role} />
       <LoginMain role ={role}/>
       <Footer />
     </>
