@@ -6,7 +6,7 @@ import NewOfferMain from "../../Components/Main/NewOfferMain/NewOfferMain";
 const NewOfferPage = ({edit}) => {
   return (
     <>
-      <Header banner role="company" />
+      <Header active="offers" banner role="company" />
       {edit ? <NewOfferMain edit />: <NewOfferMain/>}
       <Footer />
     </>
