@@ -1,0 +1,79 @@
+@import  "../../colors";
+footer{
+    > div:first-child{
+        background: $accentColor;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 24px;
+        div.column {
+            padding: 0 24px;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-around;
+            &:nth-child(2){
+                align-items: center;
+                img{
+                    width: 45%;
+                    border-radius: 3px;
+                }
+            }
+            >h4{
+                color: $primaryColor;
+                margin-bottom: 6px;
+            }
+            >img.logo{
+                width: 224px;
+                margin: 12px;
+                margin-bottom: 48px;
+                filter:grayscale(100%)invert(100%);
+                mix-blend-mode: screen;
+            }
+            >ul>li>a{
+                color: $white;
+            }
+            >div.socials{
+                margin: 48px 0;
+                display: flex;
+                flex-flow: wrap;
+                justify-content: center;
+                width: 75%;
+                button{
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 36px;
+                    border: none;
+                    margin: 6px;
+                    margin-bottom: 0;
+                    padding: 0;
+                    font-size: 15px;
+                    color: $primaryColor;
+                    &:focus{
+                        outline: 0;
+                        box-shadow: 0 0 12px $primaryColorDark;
+                    }
+                }
+            }
+            >div.badges{
+                width: 224px;
+                display: flex;
+                flex-flow: wrap;
+                justify-content: flex-start;
+                img{
+                    width: 45%;
+                }
+            }
+        }
+    }
+    > div:last-child{
+        height: 33px;
+        background: $primaryColor;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    a{
+        color: $black;
+        text-decoration:none;
+    }
+    }
+}

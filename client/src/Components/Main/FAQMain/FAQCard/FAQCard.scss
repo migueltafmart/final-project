@@ -1,0 +1,25 @@
+@import "../../../../colors";
+article.FAQOpen{
+    h3{
+        cursor: pointer;
+    }
+    margin-top: 24px;
+    background: $secondaryColorLight;
+    padding: 12px;
+    border-radius: 12px;
+    transition: 0.5;
+    > div.border{
+        width: 100%;
+        border-bottom: 2px solid $secondaryColor;
+        
+    }
+}
+article.FAQClosed{
+    h3{
+        cursor: pointer;
+    }
+    > div.border{
+        width: 100%;
+        border-bottom: 2px solid $secondaryColor;
+    }
+}

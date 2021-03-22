@@ -1,0 +1,36 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node api.js",
+    "dev": "nodemon -r dotenv/config api.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/migueltafmart/rrtt-G5-fullstack.git"
+  },
+  "author": "migueltafmart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/migueltafmart/rrtt-G5-fullstack/issues"
+  },
+  "homepage": "https://github.com/migueltafmart/rrtt-G5-fullstack#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.3",
+    "mongodb": "^3.6.4",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0",
+    "uuid": "^8.3.2"
+  },
+  "proxy": "http://localhost:3000"
+}

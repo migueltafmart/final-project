@@ -1,0 +1,79 @@
+@import "../../../colors";
+article.Popup{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    margin: 0;
+    background: #4c50a280;
+    > div.wrapper{
+        padding: 24px;
+        border-radius: 12px;
+        flex-flow: column;
+        box-shadow: 0 0 1000px $accentColor;
+        align-items: flex-start;
+        width: 896px;
+        height: 296px;
+        background: $secondaryColorLight;
+        margin: 256px auto;
+        box-shadow: 0 0 12px $accentColor;
+        >a{
+            align-self: flex-end;
+            position: absolute;
+        }
+        button:first-child{
+            text-transform: initial;
+            font-weight: 100;
+            font-size: 20px;
+            align-self:flex-end;
+            width: 10%;
+            background: none;
+            color: $accentColor;
+            align-self: flex-end;
+            padding: 6px;
+        }
+        h2{
+            font-size:24px;
+            margin: 12px;
+            margin-top: 24px;
+            width: 95%;
+            border-bottom: 2px solid $primaryColor;
+        }
+        > p{
+            width: 95%;
+            font-size: 24px;
+        }
+        > button:first-of-type{
+            font-weight: 100;
+            font-size: 20px;
+            position: absolute;
+        }
+    }
+}
+article.Popup.edit{
+    left: 0;
+    padding-bottom: 24px;
+    div.wrapper{
+        flex-flow: column;
+    }
+    >div.wrapper > h2{
+        text-transform: initial;
+    }
+    a:first-of-type{
+        position: absolute;
+        width: 5%;
+        font-family: inherit;
+        align-self: flex-end;
+        button{
+            margin-top: 0;
+            font-weight: 100;
+            font-size: 20px;
+            background:transparent
+
+        }
+    }
+   
+}

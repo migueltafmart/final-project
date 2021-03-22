@@ -1,0 +1,74 @@
+@import "../../../colors";
+main.Login{
+  > div.wrapper {
+    width: 784px;
+    flex-flow: column;
+    align-items: flex-start;
+    >span{
+      cursor: pointer;
+      align-self: flex-end;
+    }
+    > h2 {
+      width: 50%;
+      border-bottom: 2px solid $primaryColor;
+      padding-bottom: 6px;
+    }
+    > form {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 87.5%;
+      background: $secondaryColorLight;
+      padding: 48px;
+      border-radius: 12px;
+      margin: 24px 0;
+      div {
+        width: 90%;
+        background: $white;
+        margin: 6px;
+        padding: 12px;
+        border-radius: 12px;
+      }
+      label{
+        font-size: 20px;
+      }
+      input {
+        width: 95%;
+        display: block;
+        height: 64px;
+        border: none;
+        font-size: 24px;
+        &[type="submit"] {
+          height: 45px;
+          width: 15%;
+          margin: 12px;
+          margin-right: 3%;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    p {
+      width: 50%;
+    }
+    button,
+    input[type="submit"] {
+      font-family: inherit;
+      align-self: flex-end;
+      color: $white;
+      text-transform: uppercase;
+      padding: 12px;
+      background: $accentColor;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    > a {
+      align-self: flex-end;
+      margin-right: 60px;
+    }
+  }
+}
