@@ -6,11 +6,17 @@ import UserContext from "../../../Context/userContext";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import LoginMain from "../LoginMain/LoginMain";
+import CandidateCard from "../CandidateCard/CandidateCard";
+import DenyForm from "../DenyForm/DenyForm";
 const MyOffersMain = () => {
   const { user } = useContext(UserContext);
   const [offers, setOffers] = useState([]);
+  const [offerId, setOfferId] = useState("0");
+  const [candidates, setCandidates] = useState([]);
   const [view, setView] = useState("offers");
   const v = new URLSearchParams(useLocation().search).get("v");
+  const o = new URLSearchParams(useLocation().search).get("o");
+  const t = new URLSearchParams(useLocation().search).get("t");
   const [login, setLogin] = useState(false);
   useEffect(() => {
     if (v) {
@@ -20,10 +26,28 @@ const MyOffersMain = () => {
     }
   }, [v]);
   useEffect(() => {
+    if (o) {
+      setOfferId(o);
+    } 
+  }, [o]);
+  useEffect(() => {
     axios
       .get(`http://localhost:5500/api/offers/${user.userId}`)
-      .then((res) => setOffers([...res.data.response]));
+      .then((res) => setOffers([...res.data.response]))
+      .catch((err) => console.log(err));
   }, [user]);
+ 
+  useEffect(() => {
+    if (parseInt(offerId) > 0) {
+      axios
+        .get(
+          `http://localhost:5500/api/offer/${offerId}/matches?apiKey=${user.apiKey}`
+        )
+        .then((res) => setCandidates([...res.data.response]))
+        .catch((err) => console.log(err));
+    }
+     // eslint-disable-next-line
+  }, [offerId]);
   return (
     <>
       <main className="MyOffers">
@@ -96,7 +120,33 @@ const MyOffersMain = () => {
               </section>
             </>
           ) : (
-            <section></section>
+            view === "candidates" ?
+            <section>
+              <div>
+                <label htmlFor="_off">Filtra por oferta</label>
+                <select
+                  onChange={() =>
+                    setOfferId(document.querySelector("select").value)
+                  }
+                  name="offers"
+                  id="_off"
+                >
+                  <option value="0">Filtra por oferta</option>
+                  {offers.map((offer) => (
+                    <option value={offer.offerId}>{offer.jobTitle}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="candidates">
+                {candidates.length > 0 && parseInt(offerId) > 0 ? <>
+                <h3>{t}</h3>
+                {candidates.map((e, i) =><CandidateCard key={i} deny={()=>setView("deny")} candidate={e}/>)}
+                </>:<></>}
+              </div>
+            </section>
+            :<>
+            <DenyForm back={()=> setView("offers")}/>
+            </>
           )}
           {login ? (
             <LoginMain

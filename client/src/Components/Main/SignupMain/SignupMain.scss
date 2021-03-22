@@ -12,17 +12,21 @@ main.Signup {
       }
       > div.form {
         h3 {
-          width: 45%;
           margin-top: 0;
           font-weight: bold;
           color: $secondaryColorDark;
           text-transform: uppercase;
           padding: 6px;
-          border-bottom: 2px dashed $black;
+          margin: 0;
           > span {
             color: $black;
             font-weight: 100;
           }
+        }
+        span.border{
+           border-bottom: 2px dashed $black;
+           margin-bottom: 48px;
+           width: 50%;
         }
         width: 75%;
         display: flex;
@@ -33,6 +37,7 @@ main.Signup {
         background: $secondaryColorLight;
         border: none;
         border-radius: 12px;
+        margin-bottom: 36px;
         > * {
           display: block;
         }
@@ -52,48 +57,119 @@ main.Signup {
             flex-flow: row;
             justify-content: space-around;
             align-items: center;
+            > div {
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+            }
             input,
             label {
               display: inline-flex;
+              font-size: 20px;
             }
           }
+          div.hoursADay{
+            display: flex;
+            align-items: flex-end;
+            padding: 12px;
+            >input{
+              width: 5%;
+              height: 24px;
+              font-size: 24px;
+              text-align: center;
+              border-bottom: 2px solid $black;
+            }
+            >span{
+              margin-left: 6px;
+            }
+            span:last-of-type{
+              width: 70%;
+              margin-left: auto;
+              justify-self: flex-end;
+              opacity: 0.5;
+            }
+          }
+          div.note{
+            display: flex;
+            flex-flow: row;
+          }
+        }
+        div.input.file{
+          position: relative;
+          div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button {
+              height: 45px;
+              width: 35%;
+              margin: 12px;
+              margin-right: 0;
+              text-transform: uppercase;
+              color: $white;
+              font-weight: bold;
+              font-family: inherit;
+              background: $accentColor;
+              border: none;
+              border-radius: 12px;
+              align-self: flex-end;
+            }
+          }
+          input[type="file"]{
+            margin-top: 36px;
+            opacity: 0;
+            position: absolute;
+          }
+          input[type="text"]{
+            border: 1px solid $black;
+            height: 24px;
+            width: 45%;
+            font-size: 16px;
+            text-align: center;
+          }
+        }
+        div.input.name{
+          margin-bottom: 12px;
+        }
+        label {
+          font-size: 20px;
         }
         input {
-            font-family: inherit;
+          font-family: inherit;
+          font-size: 24px;
           &[type="text"] {
             width: 100%;
             display: block;
             height: 64px;
             border: none;
-            font-size: 32px;
           }
           &[type="tel"] {
             width: 100%;
             display: block;
             height: 64px;
             border: none;
-            font-size: 32px;
+            font-size: 24px;
           }
           &[type="email"] {
             width: 100%;
             display: block;
             height: 64px;
             border: none;
-            font-size: 32px;
+            font-size: 24px;
           }
           &[type="password"] {
             width: 100%;
             display: block;
             height: 64px;
             border: none;
-            font-size: 32px;
+            font-size: 24px;
           }
           &[type="date"] {
             width: 100%;
             display: block;
             height: 64px;
             border: none;
-            font-size: 32px;
+            font-size: 24px;
             color: $secondaryColorDark;
           }
 
@@ -103,34 +179,44 @@ main.Signup {
             margin: 12px;
             margin-right: 3%;
           }
+          &[type="file"]{
+            padding: 6px 0;
+          }
           &:focus {
             outline: none;
           }
         }
         textarea {
-            font-family: inherit;
-            border: none;
-            border-radius: 12px;
-            margin: 12px;
-            padding: 12px;
+          font-family: inherit;
+          border: none;
+          border-radius: 12px;
+          margin: 12px;
+          padding: 12px;
           width: 94.5%;
           height: 200px;
           resize: none;
-          font-size: 16px;
-          &::placeholder{
-              color: $secondaryColorDark;
+          font-size: 24px;
+          &::placeholder {
+            color: $secondaryColorDark;
           }
         }
-        &:last-of-type{
-            div.categories{
-                background: white;
+        &:last-of-type {
+          label:last-of-type{
+            padding: 12px;
+            font-size: 20px;
+          }
+          div#_categories {
+            margin: 6px;
+            padding: 24px;
+            border-radius: 12px;
+            background: white;
+          }
+          div.row {
+            justify-content: space-between;
+            input[type="checkbox"] {
+              margin: 12px;
             }
-            div.row{
-                justify-content: space-between;
-                input[type=checkbox]{
-                    margin: 12px;
-                }
-            }
+          }
         }
       }
       input[type="submit"] {
@@ -147,6 +233,16 @@ main.Signup {
         border-radius: 12px;
         align-self: flex-end;
       }
+      input[type="radio"] {
+        width: 36px;
+        height: 36px;
+      }
     }
+  }
+}
+div.input{
+  height: 97px;
+  &:first-of-type{
+    margin-bottom: 12px;
   }
 }

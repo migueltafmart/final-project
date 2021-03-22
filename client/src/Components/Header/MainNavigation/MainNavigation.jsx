@@ -4,10 +4,18 @@ import "./MainNavigation.scss";
 import logoCc from "../../../img/logo-cc.png";
 import logoL from "../../../img/logo-l.png";
 import UserContext from "../../../Context/userContext";
+<<<<<<< HEAD
 const MainNavigation = ({ role, active }) => {
   console.log(active);
   const { user } = useContext(UserContext);
   const [profileLinks, setProfileLinks] = useState(false);
+=======
+import LoginMain from "../../Main/LoginMain/LoginMain";
+const MainNavigation = ({ role, active }) => {
+  const { user } = useContext(UserContext);
+  const [profileLinks, setProfileLinks] = useState(false);
+  const [login, setLogin] = useState(false)
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
   return (
     <>
       <nav className="MainNavigation">
@@ -36,7 +44,11 @@ const MainNavigation = ({ role, active }) => {
                   <br /> de trabajo activas
                 </h4>
               </Link>
+<<<<<<< HEAD
               <Link className={active === "learn" ? "active" : ""} to="/">
+=======
+              <Link className={active === "faq" ? "active" : ""} to="/cuidador/preguntas-frecuentes">
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
                 <h4>
                   ¿Cómo compaginarlo
                   <br />
@@ -93,16 +105,33 @@ const MainNavigation = ({ role, active }) => {
                   </h4>
                 </Link>
               ) : (
+<<<<<<< HEAD
                 <></>
+=======
+                <button onClick={()=>setLogin(true)}>
+                  <h4>
+                    Tus ofertas <br />/ Candidatos
+                  </h4>
+                </button>
+
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
               )}
 
               <Link
                 className={active === "faq" ? "active" : ""}
+<<<<<<< HEAD
                 to="/empresa/faq"
               >
                 <h4>
                   Preguntas <br />
                   frecuentes
+=======
+                to="/empresa/preguntas-frecuentes"
+              >
+                <h4>
+                  FAQ <br />
+                  Cuidar al cuidador
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
                 </h4>
               </Link>
               {user.displayName ? (
@@ -130,6 +159,10 @@ const MainNavigation = ({ role, active }) => {
               <a href="https://ffluzon.org">
                 <img src={logoL} alt="Fundación Luzón" />{" "}
               </a>
+<<<<<<< HEAD
+=======
+              {login ? <article className="Popup"><LoginMain modal setLogin={()=> setLogin(false)}/></article>:<></> }
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
             </>
           )
         ) : (
@@ -139,7 +172,11 @@ const MainNavigation = ({ role, active }) => {
             </Link>
             {user.displayName ? (
               <span
+<<<<<<< HEAD
                 className={active === "login" ? "active public" : "public"}
+=======
+                className={active === "login" ? "active" : ""}
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
                 onClick={() => setProfileLinks(true)}
               >
                 <h4>
@@ -151,7 +188,11 @@ const MainNavigation = ({ role, active }) => {
             ) : (
               <Link
                 className={active === "login" ? "active public" : "public"}
+<<<<<<< HEAD
                 to={`cuidador/entrar`}
+=======
+                to={`/entrar`}
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
               >
                 <h4>
                   Registrarme
@@ -187,6 +228,7 @@ const MainNavigation = ({ role, active }) => {
             className="ProfileLinks"
           >
             <li>
+<<<<<<< HEAD
               <Link to="/cuidador/perfil">Mi Perfil</Link>
             </li>
             <li>
@@ -194,6 +236,15 @@ const MainNavigation = ({ role, active }) => {
             </li>
             <li>
               <Link to="/cuidador/experiencia">Mi Experiencia</Link>
+=======
+              <Link to="/cuidador/perfil?v=data">Mi perfil</Link>
+            </li>
+            <li>
+              <Link to="/cuidador/perfil?v=experience">Mi experiencia</Link>
+            </li>
+            <li>
+              <Link to="/cuidador/perfil?v=disp">Mis preferencias</Link>
+>>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
             </li>
           </ul>
         )

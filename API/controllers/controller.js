@@ -53,7 +53,6 @@ exports.signUp = async (req, res) => {
 };
 
 exports.logIn = async (req, res) => {
-  console.log(req.body)
   let { email, pwd } = req.body;
   if (regExp.email.test(email) && regExp.pwd.test(pwd)) {
     let response = await db.logIn(email);
@@ -100,7 +99,6 @@ exports.getOffers = async (req, res) => {
   }
 };
 exports.getOffer = async (req, res) => {
-  console.log(req.params.offerId)
   if (req.params.offerId) {
     //* Checkear la API key y la identidad de compañia
     if (await db.checkOffer(req.params.offerId)) {
@@ -270,11 +268,11 @@ exports.getMatches = async (req, res) => {
   }
 };
 exports.getCandidates = async (req, res) => {
-  if (await db.checkUser(req.params.id)) {
+  if (await db.checkOffer(req.params.id)) {
     try {
       return res.status(200).json({
         status: true,
-        response: await db.getCandidates(req.params.id, req.query.apiKey),
+        response: await db.getCandidates(req.params.id),
       });
     } catch (err) {
       console.log(err);
@@ -291,7 +289,6 @@ exports.getCandidates = async (req, res) => {
   }
 };
 exports.postMatch = async (req, res) => {
-  console.log()
   if (req.params.offerId && req.params.id) {
     if (await db.checkUser(req.params.id)) {
       try {

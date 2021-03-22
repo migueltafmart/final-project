@@ -373,15 +373,15 @@ exports.getMatches = async (id, apiKey) => {
     return "No params provided";
   }
 };
-exports.getCandidates = async (id, apiKey) => {
-  if (id && apiKey) {
+exports.getCandidates = async (id) => {
+  if (id) {
     let conn;
     let payload;
     try {
       conn = await pool.getConnection();
       let res = await conn.query(
-        "SELECT displayName, users.userId, urlToImg FROM users LEFT JOIN matches ON matches.userId=users.userId WHERE matches.userId=? AND users.apiKey=?;",
-        [id, apiKey]
+        "SELECT displayName, users.userId, disp, tlf, email, expDesc FROM users LEFT JOIN matches ON matches.userId=users.userId LEFT JOIN experience ON users.userId=experience.userId  WHERE offerId=?;",
+        [id]
       );
       payload = res.filter((a) => typeof a === "object");
     } catch (err) {
@@ -391,10 +391,6 @@ exports.getCandidates = async (id, apiKey) => {
       if (conn) conn.end();
       return payload;
     }
-  } else if (id) {
-    return "No API key provided";
-  } else if (apiKey) {
-    return "No id provided";
   } else {
     return "No params provided";
   }
@@ -523,7 +519,6 @@ exports.getExperience = async (id) => {
   }
 };
 exports.postEducation = async (userId, { eduTitle, eduLevel, eduDesc }) => {
-  console.log(userId, eduTitle, eduLevel, eduDesc);
   if (
     userId &&
     eduTitle.length > 0 &&
@@ -660,7 +655,6 @@ exports.getAllEducation = async (id) => {
       payload = null;
     } finally {
       if (conn) conn.end();
-      console.log(payload);
       return payload;
     }
   } else {

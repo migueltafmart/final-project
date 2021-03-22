@@ -33,7 +33,8 @@ const NewOfferMain = ({ edit }) => {
           hoursADay: hoursADay.value,
           area: "madrid",
         }
-      );
+      ).then((res) => {setPopUp(true)})
+      .catch((err) => console.log(err));
     }
   };
   const putOffer = (e) => {
@@ -73,6 +74,7 @@ const NewOfferMain = ({ edit }) => {
         .then((res) => setOffer(res.data.response))
         .catch((err) => console.log(err));
     }
+     // eslint-disable-next-line
   }, []);
 
   return (

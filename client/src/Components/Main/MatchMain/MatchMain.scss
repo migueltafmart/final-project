@@ -1,7 +1,9 @@
 @import "../../../colors";
 main.Match {
     margin-top: -48px;
+    z-index:100;
   div.wrapper {
+    z-index: 99 !important;
     background: $secondaryColorLight;
     border-radius: 12px;
     margin-top: -48px;

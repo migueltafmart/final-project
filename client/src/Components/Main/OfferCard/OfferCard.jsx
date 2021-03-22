@@ -14,15 +14,26 @@ const OfferCard = ({ offer, role, login, setLogin }) => {
         {role === "company" ? (
           <>
             <div>
-              <h4>{offer.jobTitle}</h4>
+              <Link to={`/empresa/ofertas?v=candidates&o=${offer.offerId}&t=${offer.jobTitle}`}>
+                <h4>{offer.jobTitle}</h4>
+              </Link>
             </div>
             <div>
               {offer.jobDesc.split("|").map((e, i) => (
                 <>
-                  {i > 0 ? <h5>Funciones</h5> : <></>}
+                  {i > 0 ? (
+                    i === 1 ? (
+                      <h5>Funciones</h5>
+                    ) : (
+                      <h5>Sitio Web</h5>
+                    )
+                  ) : (
+                    <></>
+                  )}
                   <p key={i}>{e}</p>
                 </>
               ))}
+              <h5>Horario</h5>
               <p>
                 {parseInt(offer.hoursADay) === 1
                   ? offer.hoursADay + " día a la semana."
@@ -60,9 +71,7 @@ const OfferCard = ({ offer, role, login, setLogin }) => {
                         <button>Solicitar trabajo</button>
                       </Link>
                     ) : (
-                      <button onClick={setLogin}>
-                        <button>Solicitar trabajo</button>
-                      </button>
+                      <button onClick={setLogin}>Solicitar trabajo</button>
                     )}
 
                     <a href={offer.jobDesc.split("|")[2]}>

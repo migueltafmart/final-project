@@ -17,8 +17,9 @@ const SignupMain = () => {
             <h3>
               Datos Personales <span>*</span>
             </h3>
+            <span className="border"></span>
             <fieldset>
-              <div className="input">
+              <div className="input name">
                 <label htmlFor="_fn">Nombre</label>
                 <input type="text" name="firstName" id="_fn" />
               </div>
@@ -71,20 +72,35 @@ const SignupMain = () => {
 
           <div className="form">
             <h3>Experiencia Profesional</h3>
+            <span className="border"></span>
             <fieldset>
               <textarea
                 name="expDesc"
                 placeholder="Cuéntanos tu experiencia Laboral"
               ></textarea>
+              <div className="input file">
+                <label htmlFor="_cv">Puedes subir un archivo con tu CV</label>
+                <div>
+                  <input
+                    type="text"
+                    readOnly
+                    value="Selecciona o arrastra un archivo"
+                    name="cv"
+                  />
+                  <button>Subir un archivo</button>
+                  <input type="file" name="cv" id="_cv" />
+                </div>
+              </div>
             </fieldset>
             <h3>Tipos de Trabajo y disponibilidad</h3>
+            <span className="border"></span>
             <fieldset>
               <label htmlFor="_categories">
                 Categorías <span>Selecciona las que más te interesen</span>
               </label>
               <div id="_categories">
                 <div className="row">
-                  <div>
+                  <div className="category">
                     <input type="checkbox" name="sectorDigital" id="_sd" />
                     <label htmlFor="_sd">Sector Digital</label>
                   </div>
@@ -110,6 +126,18 @@ const SignupMain = () => {
                     <input type="checkbox" name="sinOrdenador" id="_so" />
                     <label htmlFor="_so">Sin ordenador</label>
                   </div>
+                </div>
+              </div>
+              <div className="input note">
+                <label htmlFor="_hd">Disponibilidad</label>
+                <div className="hoursADay">
+                  <input type="text" name="hoursADay" id="_hd" />
+                  <span>Días a la semana</span>
+                  <span>
+                    *Se trata de una estimación de tu tiempo que bajo ningun
+                    concepto te descartará de las ofertas laborales que te
+                    interesen.
+                  </span>
                 </div>
               </div>
             </fieldset>

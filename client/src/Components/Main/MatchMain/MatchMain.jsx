@@ -17,6 +17,7 @@ const MatchMain = () => {
     axios.post(
       `http://localhost:5500/api/match/${offerId}/${user.userId}?apiKey=${user.apiKey}`
     );
+    // eslint-disable-next-line
   }, []);
   return (
     <main className="Match">
@@ -28,8 +29,9 @@ const MatchMain = () => {
         </h3>
         <span className="Border"></span>
         <p>
-          En breve recibirás un mensaje informándote<br/>si tu solicitud ha sido
-          aceptada.
+          En breve recibirás un mensaje informándote
+          <br />
+          si tu solicitud ha sido aceptada.
         </p>
         <p>En caso contrario, se te informará porque no ha podido ser.</p>
       </div>

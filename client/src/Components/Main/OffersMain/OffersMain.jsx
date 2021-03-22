@@ -8,6 +8,9 @@ import Popup from "../Popup/Popup";
 import { Link } from "react-router-dom";
 import LoginMain from "../LoginMain/LoginMain";
 import UserContext from "../../../Context/userContext";
+import TutorialCard from "./TutorialCard/TutorialCard";
+import officeVideo from "../../../video/office.mp4";
+import googleVideo from "../../../video/google.mp4";
 const OffersMain = () => {
   const { user } = useContext(UserContext);
   const [offerList, setOfferList] = useState([]);
@@ -50,7 +53,7 @@ const OffersMain = () => {
               debes estar registrado
             </p>
             <Link to="/cuidador/registro">
-              <button onClick={()=>setLogin(!login)}>Registrarme</button>
+              <button className="material-icons" onClick={() => setLogin(!login)}>east</button>
             </Link>
           </div>
         ) : (
@@ -58,48 +61,53 @@ const OffersMain = () => {
         )}
 
         <div className="wrapper">
-          <aside>
-            {category === "sectorDigital" ? (
-              <>
-                <h2>Sector Digital</h2>
-                <img
-                  src="https://www.sophiadigital.es/wp-content/uploads/2020/03/sector-digital-respalda-teletrabajo-para-frenar-covid-19.jpg"
-                  alt="sector digital"
-                />
-              </>
-            ) : category === "marketingOnline" ? (
-              <>
-                <h2>Marketing On-line</h2>
-                <img
-                  src="https://blog.hubspot.es/hubfs/estrategia%20marketing%20digital-1.jpg"
-                  alt="marketing online"
-                />
-              </>
-            ) : category === "gestionDatos" ? (
-              <>
-                <h2>Gestión de Datos</h2>
-                <img
-                  src="https://ayudaleyprotecciondatos.es/wp-content/uploads/2020/09/bases-de-datos-de-texto-completo.jpg"
-                  alt="gestión de datos"
-                />
-              </>
-            ) : category === "creativos" ? (
-              <>
-                <h2>Creativos</h2>
-                <img
-                  src="https://www-randstad-es.s3.amazonaws.com/wp-content/uploads/2017/10/ser-creativo-encontrar-profesionales-creativos.jpg"
-                  alt="creativos"
-                />
-              </>
-            ) : category === "otros" ? (
-              <h2>Otros</h2>
-            ) : category === "sinOrdenador" ? (
-              <h2>Sin Ordenador</h2>
-            ) : (
-              <h2>Categoría</h2>
-            )}
-          </aside>
-          <div>
+          {view === "offers" ? (
+            <aside>
+              {category === "sectorDigital" ? (
+                <>
+                  <h2>Sector Digital</h2>
+                  <img
+                    src="https://www.sophiadigital.es/wp-content/uploads/2020/03/sector-digital-respalda-teletrabajo-para-frenar-covid-19.jpg"
+                    alt="sector digital"
+                  />
+                </>
+              ) : category === "marketingOnline" ? (
+                <>
+                  <h2>Marketing On-line</h2>
+                  <img
+                    src="https://blog.hubspot.es/hubfs/estrategia%20marketing%20digital-1.jpg"
+                    alt="marketing online"
+                  />
+                </>
+              ) : category === "gestionDatos" ? (
+                <>
+                  <h2>Gestión de Datos</h2>
+                  <img
+                    src="https://ayudaleyprotecciondatos.es/wp-content/uploads/2020/09/bases-de-datos-de-texto-completo.jpg"
+                    alt="gestión de datos"
+                  />
+                </>
+              ) : category === "creativos" ? (
+                <>
+                  <h2>Creativos</h2>
+                  <img
+                    src="https://www-randstad-es.s3.amazonaws.com/wp-content/uploads/2017/10/ser-creativo-encontrar-profesionales-creativos.jpg"
+                    alt="creativos"
+                  />
+                </>
+              ) : category === "otros" ? (
+                <h2>Otros</h2>
+              ) : category === "sinOrdenador" ? (
+                <h2>Sin Ordenador</h2>
+              ) : (
+                <h2>Categoría</h2>
+              )}
+            </aside>
+          ) : (
+            <></>
+          )}
+
+          <div className="Tutorials">
             {view === "offers" ? (
               offerList.filter((offer) => offer.category === category).length >
               0 ? (
@@ -120,7 +128,9 @@ const OffersMain = () => {
               )
             ) : category === "sectorDigital" ? (
               <section>
-                <h4>Cursos y tutoriales para puestos de Sector Digital</h4>
+                <TutorialCard tutorial={{src:officeVideo ,title:"Microsoft Office", desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut--aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit. Esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation."}}/>
+                <TutorialCard tutorial={{src:googleVideo ,title:"Motores de búsqueda para SEO", desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut--aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit. Esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation."}}/>
+               
               </section>
             ) : category === "marketingOnline" ? (
               <section>
@@ -149,11 +159,15 @@ const OffersMain = () => {
             )}
           </div>
           {login ? (
-            <LoginMain
-              modal
-              setLogin={() => setLogin(!login)}
-              role="caretaker"
-            />
+            <>
+              <article className="Popup">
+                <LoginMain
+                  modal
+                  setLogin={() => setLogin(!login)}
+                  role="caretaker"
+                />
+              </article>
+            </>
           ) : (
             <></>
           )}

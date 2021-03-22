@@ -15,17 +15,16 @@ const Header = ({ banner, landing, role, active }) => {
             <MainNavigation active={active} role="company" />
           )
         ) : (
-          <MainNavigation />
+          <MainNavigation active={active} />
         )}
       </header>
-      {banner ? (
-        <div className="img">
+      {banner ? (<>
+        <img className="banner" src={banner}  alt="Cuidar al cuidador" />
           {!user.userId ? <Link to={role === "caretaker" ?"/cuidador/registro":"empresa/registro"}>
-            <button>¡Regístrate!</button> </Link>
+            <button className="action">¡Regístrate!</button> </Link>
             :<></>
          }
-          
-        </div>
+         </>
       ) : (
         <div className="nobanner"></div>
       )}

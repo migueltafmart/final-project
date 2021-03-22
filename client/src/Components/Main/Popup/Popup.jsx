@@ -11,12 +11,13 @@ const Popup = ({ action, self, setPopup }) => {
       .then((res) => console.log(res));
   };
   return (
-    <article className={action ==="edit" ? "Popup edit":"Popup"}>
+    <article className={action === "edit" ? "Popup edit" : "Popup"}>
       <div className="wrapper">
         {action === "delete" ? (
           <>
-            <button onClick={setPopup}>x</button>
-            <h2>¿De verdad quieres borrar esta oferta?</h2>
+            <button className="material-icons" onClick={setPopup}>close</button>
+            <h2>Eliminar oferta</h2>
+            <p>¿Estas seguro de que deseas eliminar esta oferta?</p>
             <button onClick={deleteSelf}>Eliminar Oferta</button>
           </>
         ) : action === "success" ? (
@@ -24,20 +25,22 @@ const Popup = ({ action, self, setPopup }) => {
             <Link to="/empresa/ofertas">
               <button>x</button>
             </Link>
-            <h2>¡Tu oferta ha sido publicada!</h2>
-            <Link to="/empresa/ofertas">
-              <button>Volver a mis ofertas</button>
-            </Link>
+            <h2>La oferta se ha publicado correctamente</h2>
+            <p>
+              Podrás consultar tu oferta publicada en el area de tus
+              ofertas/candidatos o tu perfil.
+            </p>
           </>
         ) : action === "edit" ? (
           <>
             <Link to="/empresa/ofertas">
               <button>x</button>
             </Link>
-            <h2>¡Tu oferta ha sido editada!</h2>
-            <Link to="/empresa/ofertas">
-              <button>Volver a mis ofertas</button>
-            </Link>
+            <h2>Los cambios se han publicado correctamente</h2>
+            <p>
+              Podrás consultar tu oferta modificada en el area de tus
+              ofertas/candidatos o tu perfil.
+            </p>
           </>
         ) : (
           <></>

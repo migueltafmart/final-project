@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import "./HomeMain.scss";
 import { Link } from "react-router-dom";
 import UserContext from "../../../Context/userContext";
+import caretaker from "../../../assets/img/caretaker.png";
 const HomeMain = ({ role }) => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   return (
     <main className="Home">
       <div className="wrapper">
@@ -18,28 +19,27 @@ const HomeMain = ({ role }) => {
               <div>
                 <div>
                   <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum.
+                    El programa Cuidar al Cuidador centra sus esfuerzos en
+                    buscar soluciones reales a los problemas que afrontan las
+                    familias cada día. A través de este plan de integración
+                    laboral para cuidadores ayudamos a las familias a obtener
+                    los recursos económicos que tanto necesita el enfermo y le
+                    ofrecemos al cuidador la posibilidad de seguir con su vida
+                    laboral de una manera totalmente adaptada a su situación
+                    actual.
                   </p>
                   <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum."
+                    Creemos en la igual de oportunidades que tú, como cuidador,
+                    te mereces. Nos preocupamos por acompañarte en todo momento
+                    para que puedas expresar tus inquietudes y conseguir un
+                    trabajo que se ajuste a tu situación personal. Buscamos
+                    cuidarte, darte el espacio que te mereces y ayudarte en tu
+                    incorporación laboral.
                   </p>
                 </div>
 
                 <div>
-                  <img
-                    src="https://journeycare.org/wp-content/uploads/2020/02/how-illness-affects-family-members333.jpg"
-                    alt=""
-                  />
+                  <img src={caretaker} alt="" />
                 </div>
               </div>
             </article>
@@ -54,38 +54,45 @@ const HomeMain = ({ role }) => {
                 <div>
                   <h2>¿Por qué colaborar?</h2>
                   <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum.
+                    Gracias a este plan de integración laboral para cuidadores
+                    ofrecemos a las empresas la oportunidad de participar de
+                    manera activa en la lucha contra el ELA a través de nuestro
+                    programa Cuidar al Cuidador. Uno de los principales retos a
+                    los que tienen que hacer frente los cuidadores de enfermos
+                    de ELA es la pérdida de su trabajo y la reducción de sus
+                    ingresos económicos, unos ingresos de los que el enfermo
+                    depende directamente para salir adelante.
                   </p>
                   <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum."
+                    Mediante este programa queremos colaborar con empresas que
+                    nos ayuden a solventar estos dos problemas de tal alto
+                    calado en las familias. Por un lado, le damos al cuidador un
+                    empleo gracias al cual pueda obtener autoestima y sentirse
+                    auto realizado. Por otro lado, le damos a las familias la
+                    oportunidad de mediante dichos trabajos obtener un ingreso
+                    económico que ayudará de manera directa al enfermo.
                   </p>
                 </div>
 
                 <div>
                   <h2>¿Cómo funciona?</h2>
                   <p>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum."
+                    Para formar parte del plan de integración laboral Cuidar al
+                    Cuidador debes de registrarte y rellenar un sencillo
+                    formulario. Una vez la Fundación Luzón haya recibido tus
+                    datos se pondrán en contacto contigo para cerrar la
+                    colaboración y te facilitará una contraseña a través de la
+                    cual podrás acceder. Como empresa registrada podrás publicar
+                    las ofertas que consideres y ver los candidatos que se han
+                    inscrito a las mismas.
                   </p>
-                  {!user.userId ?<Link to="/empresa/registro">
-                    <button>Registrarse</button>
-                  </Link> : <></>}
-                  
-                  
+                  {!user.userId ? (
+                    <Link to="/empresa/registro">
+                      <button>Registrarse</button>
+                    </Link>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </article>
@@ -100,22 +107,22 @@ const HomeMain = ({ role }) => {
             <div>
               <span>1</span>
               <p>
-                Conseguir que el cuidador de enfermos de ELA no abandone toda su
-                actividad laboral.
+                Conseguir crear una asociación profesional que fomente la
+                empleabilidad de cuidadores.
               </p>
             </div>
             <div>
               <span>2</span>
               <p>
-                Conseguir un ingreso económico adaptado a las circunstancias que
-                ayudará a aliviar los gastos.
+                Formar parte activa de un programa novedoso que ayuda tanto a
+                cuidadores como a empresas.
               </p>
             </div>
             <div>
               <span>3</span>
               <p>
-                Conseguir que el cuidador pueda realizar otras actividades que
-                le aporten satisfacción
+                Encontrar profesionales capacitados para desarrollar
+                determinadas funciones en tu empresa.
               </p>
             </div>
           </div>

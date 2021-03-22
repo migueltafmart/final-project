@@ -1,9 +1,9 @@
 @import "../../../colors";
 main.OfferForm {
-  div.wrapper {
+  >div.wrapper {
     flex-flow: column;
     align-items: center;
-    h2 {
+    > h2 {
       text-transform: uppercase;
       font-weight: 300;
     }
@@ -28,6 +28,7 @@ main.OfferForm {
       border-radius: 12px;
       margin: 24px 0;
       textarea{
+        font-size: 24px;
           display: block;
           resize: none;
           width: 100%;
@@ -45,12 +46,15 @@ main.OfferForm {
         padding: 12px;
         border-radius: 12px;
       }
+      label{
+        font-size: 20px;
+      }
       input {
         width: 95%;
         display: block;
         height: 64px;
         border: none;
-        font-size: 32px;
+        font-size: 24px;
         &[type="submit"] {
           height: 45px;
           width: 30%;
@@ -63,7 +67,7 @@ main.OfferForm {
       }
     }
 
-    p {
+    > p {
       width: 50%;
     }
     button,

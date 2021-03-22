@@ -29,12 +29,34 @@ main.MyOffers {
           border: none;
         }
       }
+      article.Popup{
+        width: 100vw;
+        height: 100vh;
+        margin-left: 0px;
+      }
     }
     div.offers {
       width: 100%;
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
+    }
+    section{
+      width: 100%;
+    }
+    label{
+      position: absolute;
+      opacity: 0;
+    }
+    select{
+      font-family: inherit;
+      font-size: 16px;
+      border: none;
+      font-weight: inherit;
+      align-self: flex-start;
+      &:focus{
+        outline: none;
+      }
     }
   }
 }

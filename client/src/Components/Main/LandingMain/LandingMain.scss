@@ -51,5 +51,18 @@ main.Landing {
       }
       display: flex;
     }
+    button,
+    input[type="submit"] {
+      font-family: inherit;
+      align-self: flex-end;
+      color: $white;
+      text-transform: uppercase;
+      padding: 12px;
+      background: $accentColor;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 }
