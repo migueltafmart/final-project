@@ -1,12 +1,11 @@
 import React from "react";
 import "./Footer.scss";
-import logoCc from "../../img/logo-cc.png";
-import logoL from "../../img/logo-l.png";
-import eupals from "../../img/footer/eupals.png";
-import aef from "../../img/footer/aef.png";
-import fund from "../../img/footer/fund.png";
-
-import lealtad from "../../img/footer/lealtad.png";
+import logoCc from "../../assets/img/logo-cc.png";
+import logoL from "../../assets/img/logo-l.png";
+import eupals from "../../assets/img/footer/eupals.png";
+import aef from "../../assets/img/footer/aef.png";
+import fund from "../../assets/img/footer/fund.png";
+import lealtad from "../../assets/img/footer/lealtad.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,

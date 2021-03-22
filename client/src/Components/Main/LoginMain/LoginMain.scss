@@ -22,35 +22,22 @@ main.Login{
       padding: 48px;
       border-radius: 12px;
       margin: 24px 0;
-<<<<<<< HEAD
-      > div {
-        width: 90%;
-        background: white;
-=======
       div {
         width: 90%;
         background: $white;
->>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
         margin: 6px;
         padding: 12px;
         border-radius: 12px;
       }
-<<<<<<< HEAD
-=======
       label{
         font-size: 20px;
       }
->>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
       input {
         width: 95%;
         display: block;
         height: 64px;
         border: none;
-<<<<<<< HEAD
-        font-size: 32px;
-=======
         font-size: 24px;
->>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
         &[type="submit"] {
           height: 45px;
           width: 15%;

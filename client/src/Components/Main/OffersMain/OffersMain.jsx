@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import LoginMain from "../LoginMain/LoginMain";
 import UserContext from "../../../Context/userContext";
 import TutorialCard from "./TutorialCard/TutorialCard";
-import officeVideo from "../../../video/office.mp4";
-import googleVideo from "../../../video/google.mp4";
+import officeVideo from "../../../assets/video/office.mp4";
+import googleVideo from "../../../assets/video/google.mp4";
 const OffersMain = () => {
   const { user } = useContext(UserContext);
   const [offerList, setOfferList] = useState([]);

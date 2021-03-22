@@ -11,10 +11,6 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-<<<<<<< HEAD
-=======
-    "material-design-icons": "^3.0.1",
->>>>>>> ce2601933d8a97dcc698c816b8ed707b064fbd3d
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^5.0.3",
