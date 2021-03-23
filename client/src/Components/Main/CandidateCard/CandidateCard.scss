@@ -1,0 +1,16 @@
+@import "../../../colors";
+article.Candidate {
+  background: $secondaryColorLight;
+  padding: 24px;
+  width: 96% !important;
+  margin: 0 !important;
+  margin-bottom: 24px !important;
+  border-radius: 12px;
+  > div{
+      display: flex;
+      > *{ margin-right: 24px;}
+    &:last-of-type{
+        justify-content: space-around;
+    }
+  }
+}

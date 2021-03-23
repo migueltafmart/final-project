@@ -1,0 +1,179 @@
+@import "../../../colors";
+
+nav.MainNavigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  align-items: center;
+  box-shadow: 0 12px 12px $secondaryColorDark;
+  height: 93px;
+  a,
+  button {
+    background: transparent;
+    border: none;
+    width: 15%;
+    display: flex;
+    flex-flow: column;
+    text-decoration: none;
+    color: $black;
+    &:not(.material-icons){
+      font-family: inherit;
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: 200;
+    }
+    &:first-of-type,
+    a.last-of-type {
+      flex-flow: row;
+      img {
+        max-width: 100%;
+        max-height: 70px;
+      }
+    }
+    &.public {
+      margin-left: auto;
+    }
+    &.active {
+      color: $accentColor;
+      h4 {
+        font-weight: bold !important;
+      }
+      button{
+        color: $accentColor !important;
+      }
+    }
+    img {
+      max-width: 100%;
+      align-self: flex-start;
+      margin-left: 12px;
+      max-height: 70px;
+    }
+  }
+   span {
+    cursor: pointer;
+    width: 15%;
+    display: flex;
+    flex-flow: column;
+    text-decoration: none;
+    color: $black;
+    >button{
+      background: transparent;
+      display: flex;
+      align-items: center;
+      &:focus{
+        outline: none;
+      }
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: 200;
+    }
+    &:first-of-type,
+    a.last-of-type {
+      flex-flow: row;
+      img {
+        max-width: 100%;
+        max-height: 70px;
+      }
+    }
+    &.public {
+      margin-right: auto;
+    }
+  }
+}
+ul.ProfileLinks {
+  background: white;
+  padding: 12px;
+  margin: -12px;
+  border-radius: 3px;
+  position: fixed;
+  box-shadow: 0 0 3px $accentColor;
+  left: 68.5%;
+  z-index: 3;
+  > li {
+    margin-bottom: 6px;
+  }
+  > li > a {
+    color: $black;
+    margin-bottom: 6px;
+  }
+}
+article.Popup {
+  main.Login {
+    background: $white;
+    padding: 34px;
+    border-radius: 12px;
+    height: 952px;
+    box-shadow: 0 0 12px $accentColor;
+    > div.wrapper {
+      width: 784px;
+      flex-flow: column;
+      align-items: flex-start;
+      > span {
+        cursor: pointer;
+        width: 12px;
+        align-self: flex-end;
+      }
+      > h2 {
+        width: 50%;
+        border-bottom: 2px solid $primaryColor;
+        padding-bottom: 6px;
+      }
+      > form {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 87.5%;
+        background: $secondaryColorLight;
+        padding: 48px;
+        border-radius: 12px;
+        margin: 24px 0;
+        > div {
+          width: 90%;
+          background: white;
+          margin: 6px;
+          padding: 12px;
+          border-radius: 12px;
+        }
+        label {
+          font-size: 20px;
+        }
+        input {
+          width: 95%;
+          display: block;
+          height: 64px;
+          border: none;
+          font-size: 24px;
+          &[type="submit"] {
+            font-family: inherit;
+            height: 45px;
+            width: 15%;
+            margin: 12px;
+            margin-right: 3%;
+            font-size: 16px;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      button{
+        width: 300px;
+      }
+    }
+  }
+}
+.active {
+  color: $accentColor !important;
+  h4 {
+    font-weight: bold !important;
+  }
+}
+h4{
+  margin-bottom:6px;
+}

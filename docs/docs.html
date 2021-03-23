@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>API Docs</title>
+  </head>
+  <body style="font-family: 'Montserrat', sans-serif">
+    <div class="wrapper" style="width: 95%; margin: 0 auto">
+      <p><img style="width: 33%" src="api/logo" alt="cuidar al cuidador" /></p>
+      <h1 style="color: #504797" id="cuida-al-cuidador-api">
+        Cuidar al cuidador API
+      </h1>
+      <p>
+        <em
+          >Cuidar al cuidador API is a project for Fundación Luzón that aims to
+          put the families and caretakers of ALS patients in contact with
+          companies who undersand the predicament they&#39;re in.</em
+        >
+      </p>
+      <h2 style="color: #a5ca63" id="public-endpoints">Public Endpoints</h2>
+      <h3 style="color: #504797" id="-get-gets-offers-from-the-database-">
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets offers from the database</em>
+      </h3>
+      <pre><code>/api/offers/<span class="hljs-string">[(company ID)]</span>
+      </code></pre>
+      <ul>
+        <li>
+          With a parameter returns:
+          <strong>all the offers from a company on the database</strong>
+        </li>
+        <li>
+          Without parameters returns:
+          <strong>all the offers on the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-a-single-offer-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets a single offer from the database</em>
+      </h3>
+      <pre><code>/api/offer/(<span class="hljs-name">offer</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>an offer on the database</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-post-sends-email-and-password-to-the-database-"
+      >
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Sends email and password to the database</em>
+      </h3>
+      <pre><code><span class="hljs-regexp">/api/</span>login
+      </code></pre>
+      <ul>
+        <li>
+          returns: <strong>all session data from the logged-in user</strong>
+        </li>
+      </ul>
+      <h2 style="color: #a5ca63" id="private-endpoints">Private Endpoints</h2>
+      <p>
+        <em
+          >Require an API key that refers to each of the users and their
+          role</em
+        >
+      </p>
+      <h3
+        style="color: #504797"
+        id="-get-gets-user-s-information-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets user&#39;s information from the database</em>
+      </h3>
+      <pre><code>/api/user/(<span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>information from user database</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-a-company-s-information-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets a company&#39;s information from the database</em>
+      </h3>
+      <pre><code>/api/company/(<span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>information from the selected company on the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-a-caretaker-s-information-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets a caretaker&#39;s information from the database</em>
+      </h3>
+      <pre><code>/api/company/(<span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong
+            >information from the selected caretaker on the database</strong
+          >
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-all-the-companies-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets all the companies from the database</em>
+      </h3>
+      <pre><code><span class="hljs-regexp">/api/</span>companies
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>information from the all companies on the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-a-match-s-information-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets a match&#39;s information from the database</em>
+      </h3>
+      <pre><code>/api/<span class="hljs-keyword">match</span>/(<span class="hljs-keyword">match</span> ID)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>information from the selected match on the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-all-matches-for-the-given-offer-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em>Gets all matches for the given offer from the database</em>
+      </h3>
+      <p><em>Just for company accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/</span>offer<span class="hljs-regexp">/(offer ID)/m</span>atch ID
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong
+            >information from the users who matched with the given offer</strong
+          >
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-the-information-for-the-given-education-id-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em
+          >Gets the information for the given education id from the database</em
+        >
+      </h3>
+      <pre><code>/api/education/(<span class="hljs-name">education</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>Education entry info</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-the-information-for-the-given-experience-id-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em
+          >Gets the information for the given experience id from the
+          database</em
+        >
+      </h3>
+      <pre><code>/api/experience/(<span class="hljs-name">experience</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>Experience entry info</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-all-the-education-from-the-given-caretaker-id-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em
+          >Gets all the education from the given caretaker id from the
+          database</em
+        >
+      </h3>
+      <pre><code><span class="hljs-regexp">/api/</span>caretaker<span class="hljs-regexp">/(caretaker ID)/</span>education
+      </code></pre>
+      <ul>
+        <li>
+          returns: <strong>All education data from the selected user</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-get-gets-all-the-experience-from-the-given-caretaker-id-from-the-database-"
+      >
+        <strong style="color: lightgreen">GET</strong>
+        <em
+          >Gets all the experience from the given caretaker id from the
+          database</em
+        >
+      </h3>
+      <pre><code><span class="hljs-regexp">/api/</span>caretaker<span class="hljs-regexp">/(caretaker ID)/</span>experience
+      </code></pre>
+      <ul>
+        <li>
+          returns: <strong>All experience data from the selected user</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-post-signs-up-an-account-to-the-database-"
+      >
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Signs up an account to the database</em>
+      </h3>
+      <p><em>Just for admin accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/</span>signup
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The created offer from the database</strong></li>
+      </ul>
+      <h3 style="color: #504797" id="-post-posts-an-offer-to-the-database-">
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Posts an offer to the database</em>
+      </h3>
+      <p><em>Just for company accounts</em></p>
+      <pre><code>/api/offer/(<span class="hljs-name">company</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The created offer from the database</strong></li>
+      </ul>
+      <h3 style="color: #504797" id="-post-posts-an-match-to-the-database-">
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Posts an match to the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code>/api/offer/(<span class="hljs-name">company</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The created match from the database</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-post-posts-an-education-entry-to-the-database-"
+      >
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Posts an education entry to the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/</span>caretaker<span class="hljs-regexp">/(caretaker ID)/</span>education
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>The created education entry from the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-post-posts-an-education-entry-to-the-database-"
+      >
+        <strong style="color: lightskyblue">POST</strong>
+        <em>Posts an education entry to the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/</span>caretaker<span class="hljs-regexp">/(caretaker ID)/</span>education
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>The created education entry from the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-put-edits-an-offer-posted-on-the-database-"
+      >
+        <strong style="color: lightorange">PUT</strong>
+        <em>Edits an offer posted on the database</em>
+      </h3>
+      <p><em>Just for company accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/</span>offer<span class="hljs-regexp">/(offer ID)/</span>education
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The updated offer from the database</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-put-edits-a-match-posted-on-the-database-"
+      >
+        <strong style="color: lightorange">PUT</strong>
+        <em>Edits a match posted on the database</em>
+      </h3>
+      <p><em>Just for company accounts</em></p>
+      <pre><code><span class="hljs-regexp">/api/m</span>atch<span class="hljs-regexp">/(match ID)/</span>education
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The updated match from the database</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-put-edits-an-education-entry-posted-on-the-database-"
+      >
+        <strong style="color: lightorange">PUT</strong>
+        <em>Edits an education entry posted on the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code>/api/education/(<span class="hljs-name">education</span> ID)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>The updated education entry from the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-put-edits-an-experience-entry-posted-on-the-database-"
+      >
+        <strong style="color: lightorange">PUT</strong>
+        <em>Edits an experience entry posted on the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code>/api/experience/(<span class="hljs-name">experience</span> ID)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong>The updated experience entry from the database</strong>
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-put-edits-the-account-posted-on-the-database-"
+      >
+        <strong style="color: lightorange">PUT</strong>
+        <em>Edits the account posted on the database</em>
+      </h3>
+      <pre><code>/api/experience/(<span class="hljs-name">experience</span> ID)
+      </code></pre>
+      <ul>
+        <li>
+          returns:
+          <strong
+            >The updated information from the user from the database</strong
+          >
+        </li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-delete-deletes-an-offer-posted-on-the-database-"
+      >
+        <strong style="color: lightcoral">DELETE</strong>
+        <em>Deletes an offer posted on the database</em>
+      </h3>
+      <p><em>Just for company accounts</em></p>
+      <pre><code>/api/offer/(<span class="hljs-name">offer</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The number of rows affected</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-delete-deletes-an-match-posted-on-the-database-"
+      >
+        <strong style="color: lightcoral">DELETE</strong>
+        <em>Deletes an match posted on the database</em>
+      </h3>
+      <pre><code>/api/<span class="hljs-keyword">match</span>/(<span class="hljs-keyword">match</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The number of rows affected</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-delete-deletes-an-education-entry-posted-on-the-database-"
+      >
+        <strong style="color: lightcoral">DELETE</strong>
+        <em>Deletes an education entry posted on the database</em>
+      </h3>
+      <pre><code>/api/education/(<span class="hljs-name">education</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The number of rows affected</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-delete-deletes-an-experience-entry-posted-on-the-database-"
+      >
+        <strong style="color: lightcoral">DELETE</strong>
+        <em>Deletes an experience entry posted on the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code>/api/experience/(<span class="hljs-name">experience</span> ID)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The number of rows affected</strong></li>
+      </ul>
+      <h3
+        style="color: #504797"
+        id="-delete-deletes-an-user-account-posted-on-the-database-"
+      >
+        <strong style="color: lightcoral">DELETE</strong>
+        <em>Deletes an user account posted on the database</em>
+      </h3>
+      <p><em>Just for caretaker accounts</em></p>
+      <pre><code>/api/user/(<span class="hljs-keyword">user</span> <span class="hljs-title">ID</span>)
+      </code></pre>
+      <ul>
+        <li>returns: <strong>The number of rows affected</strong></li>
+      </ul>
+    </div>
+  </body>
+</html>
