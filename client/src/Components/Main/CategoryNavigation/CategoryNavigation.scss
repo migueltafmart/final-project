@@ -1,0 +1,25 @@
+@import "../../../colors";
+nav.Category {
+  margin: 24px 0;
+  div.wrapper {
+    border-bottom: 3px solid $primaryColor;
+  }
+  button {
+    padding: 6px;
+    width: calc(100% / 6);
+    text-align: left;
+    font-family: inherit;
+    font-size: 14px;
+    background: white;
+    border: none;
+    border-bottom: 11px solid transparent;
+    transition: 0.25s;
+    &:focus{
+        outline: none;
+    }
+  }
+  button.active{
+    font-weight: bold;
+      border-bottom: 11px solid $primaryColor;
+  }
+}

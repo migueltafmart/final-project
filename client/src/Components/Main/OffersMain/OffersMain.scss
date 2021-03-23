@@ -1,0 +1,63 @@
+@import "../../../colors";
+main.Offers {
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  flex-flow: column;
+  > div.wrapper {
+    justify-content: flex-start;
+    align-items: center;
+    > button {
+      margin: 12px;
+    }
+    aside {
+      height: 864px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 35%;
+      overflow: hidden;
+      padding: 0 12px;
+      margin-right: 24px;
+      img{
+        width: 100%;
+      }
+      h2 {
+        width: 100%;
+        align-self: flex-start;
+        padding-bottom: 6px;
+        border-bottom: 2px solid $primaryColor;
+      }
+    }
+    > div {
+      height: 800px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: flex;
+      flex-flow: column;
+      width: 65%;
+      align-items: flex-end;
+      padding-top: 64px;
+      > div.OfferCard {
+        width: 100%;
+      }
+    }
+  }
+  section {
+    width: 100%;
+  }
+  main.Login{
+      position: absolute;
+      top: 93px;
+      left: 20%;
+      height: 1000px;
+      box-shadow: 0 0 12px $accentColor;
+      div.wrapper{
+          overflow-y: scroll;
+          border-radius: 12px;
+      }
+  }
+  div.Tutorials{
+    width:100% !important;
+  }
+}

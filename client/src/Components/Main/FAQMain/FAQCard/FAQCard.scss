@@ -1,0 +1,41 @@
+@import "../../../../colors";
+article.FAQOpen{
+    h3{
+        cursor: pointer;
+    }
+    display: flex;
+    margin-top: 24px;
+    background: $secondaryColorLight;
+    border-radius: 12px;
+    overflow:hidden;
+    >div.img:first-of-type{
+        padding: 12px;
+        width: 65%;
+    }
+    >div:first-of-type{
+         padding: 12px;
+         width: 100%;
+        &.img{
+        width: 65%;
+        }
+        
+    }
+    transition: 0.5;
+    >div > div.border{
+        width: 100%;
+        border-bottom: 2px solid $secondaryColor;
+        
+    }
+    img.faq{
+        width: 35%;
+    }
+}
+article.FAQClosed{
+    h3{
+        cursor: pointer;
+    }
+    > div.border{
+        width: 100%;
+        border-bottom: 2px solid $secondaryColor;
+    }
+}

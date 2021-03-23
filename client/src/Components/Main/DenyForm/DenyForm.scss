@@ -1,0 +1,60 @@
+@import "../../../colors";
+section.Deny {
+  > h3 {
+    text-transform: initial !important;
+    width: 50%;
+  }
+  > p {
+    width: 75%;
+  }
+  > form {
+    font-size: 18px;
+    background: $secondaryColorLight;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start !important;
+    > h4 {
+      text-transform: uppercase;
+      align-self: flex-start !important;
+      margin-bottom: 12px;
+      font-weight: 400 !important;
+    }
+    > * {
+      display: block;
+    }
+    > span {
+      font-weight: 400;
+    }
+    > div {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      &:last-of-type {
+        margin-bottom: 48px;
+      }
+      > input {
+        width: 24px;
+        height: 24px;
+      }
+      > label {
+        position: initial !important;
+        opacity: 1 !important;
+      }
+    }
+    > button {
+      width: 10%;
+      align-self: flex-end;
+      margin-right: 172px;
+      font-family: inherit;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: $white;
+      background: $accentColor;
+      border: none;
+      padding: 12px;
+    border-radius: 6px;
+    }
+  }
+}

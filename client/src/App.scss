@@ -1,0 +1,24 @@
+@import "./colors";
+
+ul{
+    list-style: none;
+    padding-left: 0;
+    li{
+        text-indent: none;
+    }
+}
+a{
+    text-decoration: none;
+}
+div.wrapper{
+    width: 1130px;
+    margin: 0 auto;
+    display: flex;
+}
+main{
+    margin: 54px 0 ;
+}
+button.material-icons{
+    border: none;
+    background: transparent;
+}

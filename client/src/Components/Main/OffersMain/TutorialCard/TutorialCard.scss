@@ -1,0 +1,71 @@
+@import "../../../../colors";
+div.Tutorial {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  div:first-child {
+    h4 {
+      color: $accentColor;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 6px;
+      margin-top: 12px;
+      padding-left: 18px;
+    }
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 6px;
+    background: $secondaryColor;
+  }
+  div:nth-child(2) {
+    display: flex;
+    border: 1px solid $secondaryColor;
+    border-radius: 0 0 12px 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+    p{
+        margin: 12px;
+    }
+    div:last-child {
+      display: flex;
+      flex-flow: row-reverse;
+      button {
+        text-transform: uppercase;
+        background: $accentColor;
+        color: $white;
+        font-weight: bold;
+        font-weight: inherit;
+        margin: 6px;
+        border: none;
+        border-radius: 6px;
+        padding: 12px;
+      }
+    }
+  }
+  button {
+    text-transform: uppercase;
+    background: $accentColor;
+    color: $white;
+    font-weight: bold;
+    font-weight: inherit;
+    margin: 6px;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    &#web {
+      background: $primaryColor;
+    }
+  }
+  div.userDock {
+    padding-right: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    button:first-child {
+      background: $primaryColor;
+    }
+  }
+}
+video{
+  width: 45%;
+}

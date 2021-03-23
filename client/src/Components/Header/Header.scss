@@ -1,0 +1,43 @@
+@import "../../colors";
+header{
+  z-index: 0;
+  nav{
+    z-index: 3 !important;
+  }
+  
+}
+div.nobanner {
+  height: 93px;
+}
+
+
+img.banner {
+  z-index: -99 !important;
+  margin: 0 auto;
+  margin-top: 93px;
+  width: 100%;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  }
+  button.action {
+    z-index: 0 !important;
+    position: absolute;
+    top: 356px;
+    right: 0;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 10px 0 0 10px;
+    padding: 12px 48px;
+    padding-left: 72px;
+    background: $accentColor;
+    border: none;
+    color: $white;
+    margin: 0;
+    transition: 0.25s;
+    &:hover{
+      padding-right: 112px;
+
+    }
+}

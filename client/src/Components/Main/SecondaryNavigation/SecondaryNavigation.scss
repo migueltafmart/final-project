@@ -1,0 +1,23 @@
+@import "../../../colors";
+nav.Secondary {
+  width: 100%;
+  button {
+    font-family: inherit;
+    width: 565px;
+    height: 55px;
+    border:2px solid $primaryColor !important;
+    text-transform: uppercase;
+    background: white !important;
+    color: $primaryColor !important;
+    transition: 0.5s;
+    border-radius: 0px !important;
+    font-weight: medium !important;
+    &:focus{
+      outline: none;
+    }
+  }
+  button.active{
+    background: $primaryColor !important;
+    color: $white !important;
+  }
+}
